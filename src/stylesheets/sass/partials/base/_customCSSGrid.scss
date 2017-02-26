@@ -1,0 +1,295 @@
+html {
+  box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto; }
+
+
+  .row:after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.desktop-c, .desktop-c-1 {
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: calc(1 * (100% - 20px * (12 / 1)) / 12); }
+
+.desktop-c-2 {
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: calc(2 * (100% - 20px * (12 / 2)) / 12); }
+
+.desktop-c-3 {
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: calc(3 * (100% - 20px * (12 / 3)) / 12); }
+
+.desktop-c-4 {
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: calc(4 * (100% - 20px * (12 / 4)) / 12); }
+
+.desktop-c-5 {
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: calc(5 * (100% - 20px * (12 / 5)) / 12); }
+
+.desktop-c-6 {
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: calc(6 * (100% - 20px * (12 / 6)) / 12); }
+
+.desktop-c-7 {
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: calc(7 * (100% - 20px * (12 / 7)) / 12); }
+
+.desktop-c-8 {
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: calc(8 * (100% - 20px * (12 / 8)) / 12); }
+
+.desktop-c-9 {
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: calc(9 * (100% - 20px * (12 / 9)) / 12); }
+
+.desktop-c-10 {
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: calc(10 * (100% - 20px * (12 / 10)) / 12); }
+
+.desktop-c-11 {
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: calc(11 * (100% - 20px * (12 / 11)) / 12); }
+
+.desktop-c-12 {
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: calc(12 * (100% - 20px * (12 / 12)) / 12); }
+
+@media (max-width: 1199px) {
+  .tablet-c-1 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(1 * (100% - 20px * (12 / 1)) / 12); } }
+
+@media (max-width: 1199px) {
+  .tablet-c-2 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(2 * (100% - 20px * (12 / 2)) / 12); } }
+
+@media (max-width: 1199px) {
+  .tablet-c-3 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(3 * (100% - 20px * (12 / 3)) / 12); } }
+
+@media (max-width: 1199px) {
+  .tablet-c-4 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(4 * (100% - 20px * (12 / 4)) / 12); } }
+
+@media (max-width: 1199px) {
+  .tablet-c-5 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(5 * (100% - 20px * (12 / 5)) / 12); } }
+
+@media (max-width: 1199px) {
+  .tablet-c-6 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(6 * (100% - 20px * (12 / 6)) / 12); } }
+
+@media (max-width: 1199px) {
+  .tablet-c-7 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(7 * (100% - 20px * (12 / 7)) / 12); } }
+
+@media (max-width: 1199px) {
+  .tablet-c-8 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(8 * (100% - 20px * (12 / 8)) / 12); } }
+
+@media (max-width: 1199px) {
+  .tablet-c-9 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(9 * (100% - 20px * (12 / 9)) / 12); } }
+
+@media (max-width: 1199px) {
+  .tablet-c-10 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(10 * (100% - 20px * (12 / 10)) / 12); } }
+
+@media (max-width: 1199px) {
+  .tablet-c-11 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(11 * (100% - 20px * (12 / 11)) / 12); } }
+
+@media (max-width: 1199px) {
+  .tablet-c-12 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(12 * (100% - 20px * (12 / 12)) / 12); } }
+
+@media (max-width: 699px) {
+  .mobile-c-1 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(1 * (100% - 20px * (12 / 1)) / 12); } }
+
+@media (max-width: 699px) {
+  .mobile-c-2 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(2 * (100% - 20px * (12 / 2)) / 12); } }
+
+@media (max-width: 699px) {
+  .mobile-c-3 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(3 * (100% - 20px * (12 / 3)) / 12); } }
+
+@media (max-width: 699px) {
+  .mobile-c-4 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(4 * (100% - 20px * (12 / 4)) / 12); } }
+
+@media (max-width: 699px) {
+  .mobile-c-5 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(5 * (100% - 20px * (12 / 5)) / 12); } }
+
+@media (max-width: 699px) {
+  .mobile-c-6 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(6 * (100% - 20px * (12 / 6)) / 12); } }
+
+@media (max-width: 699px) {
+  .mobile-c-7 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(7 * (100% - 20px * (12 / 7)) / 12); } }
+
+@media (max-width: 699px) {
+  .mobile-c-8 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(8 * (100% - 20px * (12 / 8)) / 12); } }
+
+@media (max-width: 699px) {
+  .mobile-c-9 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(9 * (100% - 20px * (12 / 9)) / 12); } }
+
+@media (max-width: 699px) {
+  .mobile-c-10 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(10 * (100% - 20px * (12 / 10)) / 12); } }
+
+@media (max-width: 699px) {
+  .mobile-c-11 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(11 * (100% - 20px * (12 / 11)) / 12); } }
+
+@media (max-width: 699px) {
+  .mobile-c-12 {
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: calc(12 * (100% - 20px * (12 / 12)) / 12); } }
+
+/*# sourceMappingURL=main.css.map */

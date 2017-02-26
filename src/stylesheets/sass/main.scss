@@ -1,0 +1,186 @@
+@import './partials/base/_normalize.scss';
+@import './partials/base/_customCSSGrid.scss';
+
+body {
+	background-image: url("../images/original/128-168.jpg");
+	background-repeat: repeat;
+}
+nav > h1 {
+	margin: 0;
+	font-family: 'Lora', serif;
+	color: white;
+	background-color: rgba(0,0,0,0.8);
+	text-align: center;
+	padding: 0.7em;
+	font-size: 1.8em;
+}
+
+div.wrapper {
+	margin-bottom: 5px;
+	background-image: url("../images/original/128-79.jpg");
+	background-repeat: repeat;
+	background-attachment: fixed;
+	width: 100%;
+}
+
+article.jumbotron {
+	background-size: 6em;
+	text-align: center;
+	color: white;
+	padding: 70px 0;
+}
+
+article.signUp {
+	background-image: url("../images/original/128-168.jpg");
+	background-repeat: repeat;
+	background-attachment: fixed;
+	border-radius: 5px 5px 5px 5px;
+	padding-bottom: 20px;
+	max-width: 700px;
+	margin: 0 auto;
+}
+.signUp > section {
+	background-color: grey;
+	border-radius: 5px 5px 0 0;
+	& > h3 {
+		font-size: 1.2em;
+		line-height: 2.5;
+		color: white;
+	}
+	& + form {
+		color: rgba(127,115,119,1);
+		padding: 5px
+		input {
+			background-color: rgba(127,115,119,0.5);
+			border: solid 2px grey;
+		}
+		input[type="submit"] {
+			transition: all 1s;
+			&:hover {
+				color: white;
+				background-color: rgba(127,115,119,0.5);
+			}
+		}
+	}
+
+}
+div label {
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+	width: 80%;
+}
+div input {
+	display: block;
+	text-align: left;
+	margin: 0 auto;
+	width: 80%;
+	&[type="submit"] {
+		width: auto;
+	}
+}
+img {
+	vertical-align: middle;
+}
+
+// Banner
+section.banner {
+	text-align: center;
+	background-color: rgba(0,0,0,0.8);
+	h2 {
+		font-family: 'Lora', serif;
+		margin: 0;
+		color: white;
+		line-height: 2;
+	}
+}
+
+// Carousel
+
+article.content {
+	margin-bottom: 5px;
+	max-height: 600px;
+	background-color: rgba(0,0,0,0.7);
+	padding: 2em 0;
+	.carousel {
+		width: 80%;
+		margin: 0 auto;
+
+	}
+	div div.slick-slide {
+		margin: 0 auto;
+		overflow: hidden;
+		img {	
+				margin: 0 auto;
+				max-height: 500px;
+				width: 100%;
+				& + .overlay {
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					right: 0;
+					opacity: 0;
+					transition: .5s ease;
+					background-color: rgba(0,0,0,0.75);
+					div {
+						color: white;
+						font-size: 20px;
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+					}
+				}
+			}
+			&:hover .overlay {
+				opacity: 1;
+			}
+			& .carouselUnit {
+				position: relative;
+				width: 80%;
+				margin: 0 auto;
+			}
+		}
+	button {
+		color: blue;
+	}
+}
+
+// Skeleton CSS button style
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: #555;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box; }
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  color: #333;
+  border-color: #888;
+  outline: 0; }
