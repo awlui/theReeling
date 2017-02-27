@@ -28,9 +28,20 @@ module.exports = function(grunt) {
 					dest: 'public/images'
 				}]
 			}
+		},
+		uglify: {
+			options: {
+				mangle: false
+			},
+			dev: {
+				files: {
+					'public/scripts/main.min.js': ['src/scripts/main.js']
+				}
+			}
 		}
 
 	});
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-tinyimg');

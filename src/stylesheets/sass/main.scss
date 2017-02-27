@@ -79,9 +79,6 @@ div input {
 		width: auto;
 	}
 }
-img {
-	vertical-align: middle;
-}
 
 // Banner
 section.banner {
@@ -105,42 +102,41 @@ article.content {
 	.carousel {
 		width: 80%;
 		margin: 0 auto;
-
-	}
-	div div.slick-slide {
-		margin: 0 auto;
-		overflow: hidden;
-		img {	
-				margin: 0 auto;
-				max-height: 500px;
-				width: 100%;
-				& + .overlay {
-					position: absolute;
-					top: 0;
-					bottom: 0;
-					left: 0;
+		& > div {
+			margin: 0 auto;
+			overflow: hidden;
+			img {	
+					margin: 0 auto;
+					max-height: 500px;
 					width: 100%;
-					right: 0;
-					opacity: 0;
-					transition: .5s ease;
-					background-color: rgba(0,0,0,0.75);
-					div {
-						color: white;
-						font-size: 20px;
+					& + .overlay {
 						position: absolute;
-						top: 50%;
-						left: 50%;
-						transform: translate(-50%, -50%);
+						top: 0;
+						bottom: 0;
+						left: 0;
+						width: 100%;
+						right: 0;
+						opacity: 0;
+						transition: .5s ease;
+						background-color: rgba(0,0,0,0.75);
+						div {
+							color: white;
+							font-size: 20px;
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+						}
 					}
 				}
-			}
-			&:hover .overlay {
-				opacity: 1;
-			}
-			& .carouselUnit {
-				position: relative;
-				width: 80%;
-				margin: 0 auto;
+				&:hover .overlay {
+					opacity: 1;
+				}
+				& .carouselUnit {
+					position: relative;
+					width: 80%;
+					margin: 0 auto;
+				}
 			}
 		}
 	button {

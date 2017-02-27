@@ -693,9 +693,6 @@ div input {
   div input[type="submit"] {
     width: auto; }
 
-img {
-  vertical-align: middle; }
-
 section.banner {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.8); }
@@ -713,36 +710,36 @@ article.content {
   article.content .carousel {
     width: 80%;
     margin: 0 auto; }
-  article.content div div.slick-slide {
-    margin: 0 auto;
-    overflow: hidden; }
-    article.content div div.slick-slide img {
+    article.content .carousel > div {
       margin: 0 auto;
-      max-height: 500px;
-      width: 100%; }
-      article.content div div.slick-slide img + .overlay {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        right: 0;
-        opacity: 0;
-        transition: .5s ease;
-        background-color: rgba(0, 0, 0, 0.75); }
-        article.content div div.slick-slide img + .overlay div {
-          color: white;
-          font-size: 20px;
+      overflow: hidden; }
+      article.content .carousel > div img {
+        margin: 0 auto;
+        max-height: 500px;
+        width: 100%; }
+        article.content .carousel > div img + .overlay {
           position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%); }
-    article.content div div.slick-slide:hover .overlay {
-      opacity: 1; }
-    article.content div div.slick-slide .carouselUnit {
-      position: relative;
-      width: 80%;
-      margin: 0 auto; }
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          right: 0;
+          opacity: 0;
+          transition: .5s ease;
+          background-color: rgba(0, 0, 0, 0.75); }
+          article.content .carousel > div img + .overlay div {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); }
+      article.content .carousel > div:hover .overlay {
+        opacity: 1; }
+      article.content .carousel > div .carouselUnit {
+        position: relative;
+        width: 80%;
+        margin: 0 auto; }
   article.content button {
     color: blue; }
 
