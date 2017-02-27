@@ -13,6 +13,7 @@
 	<body>
 		<nav>
 			<h1>The Reeling</h1>
+			<a href="">Log In</a>
 		</nav>
 		<article class="content">
 				<div class="carousel">
@@ -20,27 +21,27 @@
 						<div class="carouselUnit">
 							<img src="https://images4.alphacoders.com/203/203996.jpg" data-poster="http://fontmeme.com/images/USA_full-spirited-away-poster.jpg" data-default="https://images4.alphacoders.com/203/203996.jpg" alt="">
 <!-- 							<img data-lazy="https://images4.alphacoders.com/203/203996.jpg" data-sm-image="http://fontmeme.com/images/USA_full-spirited-away-poster.jpg" alt="">
- -->							<div class="overlay">
-								<div class="text">Spirited Away</div>
-							</div>
+-->							<a href="#one" class="overlay">
+								<div>Spirited Away</div>
+							</a>
 						</div>
 					</div>
 					<div>
 						<div class="carouselUnit">
 							<!-- <img src="https://blurppy.files.wordpress.com/2014/05/screen-shot-2014-05-17-at-10-06-40-pm.png" alt=""> -->
-							<img src="https://blurppy.files.wordpress.com/2014/05/screen-shot-2014-05-17-at-10-06-40-pm.png" data-poster="http://pre01.deviantart.net/47b3/th/pre/i/2016/062/0/7/spirit_of_the_demon___howl_s_moving_castle_poster_by_edwardjmoran-d9trrjf.jpg" data-default="https://blurppy.files.wordpress.com/2014/05/screen-shot-2014-05-17-at-10-06-40-pm.png" alt="">
-							<div class="overlay">
+							<img src="https://blurppy.files.wordpress.com/2014/05/screen-shot-2014-05-17-at-10-06-40-pm.png" data-poster="https://s-media-cache-ak0.pinimg.com/originals/a5/13/df/a513df413b50b1c5de6e2e98b54691d8.jpg" data-default="https://blurppy.files.wordpress.com/2014/05/screen-shot-2014-05-17-at-10-06-40-pm.png" alt="">
+							<a href="#two" class="overlay">
 								<div>Interstellar</div>
-							</div>
+							</a>
 						</div>
 					</div>
 					<div>
 						<div class="carouselUnit">
 							<!-- <img src="https://images7.alphacoders.com/325/325547.jpg" alt=""> -->
-							<img src="https://images7.alphacoders.com/325/325547.jpg" data-poster="https://s-media-cache-ak0.pinimg.com/originals/a5/13/df/a513df413b50b1c5de6e2e98b54691d8.jpg" data-default="https://images7.alphacoders.com/325/325547.jpg" alt="">
-							<div class="overlay">
-								<div class="text">Howl's Moving Castle</div>
-							</div>
+							<img src="https://images7.alphacoders.com/325/325547.jpg" data-poster="http://pre01.deviantart.net/47b3/th/pre/i/2016/062/0/7/spirit_of_the_demon___howl_s_moving_castle_poster_by_edwardjmoran-d9trrjf.jpg" data-default="https://images7.alphacoders.com/325/325547.jpg" alt="">
+							<a class="overlay">
+								<div>Howl's Moving Castle</div>
+							</a>
 						</div>
 					</div>
 
@@ -87,17 +88,40 @@
 		</section>
 		<article class="container">
 			<div class="row">
-				<article class="desktop-c-12">
-					<section class="desktop-c-6 tablet-c-6 mobile-c-12">
-						profile
+				<article class="desktop-c-12 reviews">
+					<section id="one" class="desktop-c-6 tablet-c-6 mobile-c-12">
+						<h2>Spirited Away</h2>
+						<p>I first watch Spirited Away in the Sixth Grade and, even then, I knew there was something special about this movie... <a href="">Full Review</a></p>
+						<span>-Andy Lui</span>
+					</section>
+					<section id="two" class="desktop-c-6 tablet-c-6 mobile-c-12">
+						<h2>Howl's Moving Castle</h2>
+						<p>I watched Howl's Moving Castle a couple of years after Spirited Away, created by the same director, the masterful Hayao Miyazaki. I noticed immediately the magic imbued in the filmmaking yet there was something that distinguished it from its older sibling...<a href="">Full Review</a></p>
+						<span>-Andy Lui</span>
 					</section>
 					<section class="desktop-c-6 tablet-c-6 mobile-c-12">
-						review
+						<h2>Interstellar</h2>
+						<p>I watched Howl's Moving Castle a couple of years after Spirited Away, created by the same director, the masterful Hayao Miyazaki. I noticed immediately the magic imbued in the filmmaking yet there was something that distinguished it from its older sibling...<a href="">Full Review</a></p>
+						<span>-Andy Lui</span>
 					</section>
 				</article>
-
 			</div>
 		</article>
+		<footer>
+			<article class="container">
+				<div class="row">
+					<section class="desktop-c-12">
+						<h2>If you like what you see, feel free to peruse my <a href="https://awlui.github.io">Personal Website</a></h2>
+					</section>
+					<section class="desktop-c-6">
+						<p>Credits to <a href="http://kenwheeler.github.io/slick/">Ken Wheeler's Slick Library</a>. The carousel would be doable without it but the library makes it that much easier and gives me options to change carousel options in the future.</p>
+					</section>
+					<section class="desktop-c-6">
+						<p>Coming Soon: This website is in the initial stages of static web design. It will be converted into a Node.js/Express Application supported by a RESTful API wrapping around a Mongodb database.</p>
+					</section>
+				</div>
+			</article>
+		</footer>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   	<script type="text/javascript" src="slick/slick.min.js"></script>

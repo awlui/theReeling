@@ -4,16 +4,35 @@
 body {
 	background-image: url("../images/original/128-168.jpg");
 	background-repeat: repeat;
-}
-nav > h1 {
-	margin: 0;
 	font-family: 'Lora', serif;
-	color: white;
-	background-color: rgba(0,0,0,0.8);
-	text-align: center;
-	padding: 0.7em;
-	font-size: 1.8em;
 }
+
+nav {
+	background-color: rgba(0,0,0,0.8);
+	padding: 0.7em;
+	text-align: center;
+	color: white;
+	& > h1 {
+		font-size: 1.8em;
+		margin: 0;
+		display: inline-block;
+	}
+	& a {
+		position: absolute;
+		right: 2em;
+		line-height: 2em;
+		text-decoration: none;
+		padding-right: 2em;
+		color: rgba(255,255,255,0.8);
+		&:hover {
+			color: rgba(255,255,255,1);
+		}
+	}
+}
+
+
+
+
 
 div.wrapper {
 	margin-bottom: 5px;
@@ -109,7 +128,7 @@ article.content {
 					margin: 0 auto;
 					max-height: 500px;
 					width: 100%;
-					& + .overlay {
+					& + a{
 						position: absolute;
 						top: 0;
 						bottom: 0;
@@ -129,7 +148,7 @@ article.content {
 						}
 					}
 				}
-				&:hover .overlay {
+				&:hover a {
 					opacity: 1;
 				}
 				& .carouselUnit {
@@ -143,6 +162,37 @@ article.content {
 		color: blue;
 	}
 }
+
+// review section
+.reviews {
+	padding: 50px 0;
+	section {
+		background-color: rgba(255,255,255,0.5);
+		border-radius: 5px;
+		padding: 20px;
+	}
+}
+
+//footer
+footer {
+	background-color: rgba(0,0,0,0.8);
+	color: white;
+	text-align: center;
+	margin: 5px 0;
+	padding-bottom: 60px;
+	h2 {
+		border-bottom: solid 1px white;
+		padding: 10px;
+	}
+	a {
+		color: rgba(255,255,255,0.75);
+		&:hover {
+			color: rgba(255,255,255,1);
+		}
+	}
+}
+
+
 
 // Skeleton CSS button style
 .button,
