@@ -626,9 +626,6 @@ html {
     margin-left: 10px;
     width: calc(12 * (100% - 20px * (12 / 12)) / 12); } }
 /*# sourceMappingURL=main.css.map */
-html {
-  scroll-behavior: smooth; }
-
 body {
   background-image: url("../images/original/128-168.jpg");
   background-repeat: repeat;
@@ -643,15 +640,24 @@ nav {
     font-size: 1.8em;
     margin: 0;
     display: inline-block; }
-  nav a {
-    position: absolute;
-    right: 2em;
-    line-height: 2em;
-    text-decoration: none;
-    padding-right: 2em;
-    color: rgba(255, 255, 255, 0.8); }
-    nav a:hover {
+    nav > h1 a {
+      text-decoration: none;
       color: white; }
+  nav div {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 2em; }
+    nav div a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 3em;
+      margin: 0 1em; }
+      nav div a:hover {
+        color: white; }
+      @media (max-width: 699px) {
+        nav div a {
+          display: none; } }
 
 div.wrapper {
   margin-bottom: 5px;
@@ -688,10 +694,17 @@ article.signUp {
       padding-background-color: rgba(127, 115, 119, 0.5);
       padding-border: solid 2px grey; }
     .signUp > section + form input[type="submit"] {
-      transition: all 1s; }
+      transition: all 1s;
+      display: block; }
       .signUp > section + form input[type="submit"]:hover {
         color: white;
         background-color: rgba(127, 115, 119, 0.5); }
+    .signUp > section + form span {
+      display: none;
+      margin-bottom: 20px; }
+      @media (max-width: 699px) {
+        .signUp > section + form span {
+          display: inline-block; } }
 
 div label {
   display: block;
@@ -716,22 +729,22 @@ section.banner {
     color: white;
     line-height: 2; }
 
-article.content {
+article.home {
   margin-bottom: 5px;
   max-height: 600px;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 2em 0; }
-  article.content .carousel {
+  article.home .carousel {
     width: 80%;
     margin: 0 auto; }
-    article.content .carousel > div {
+    article.home .carousel > div {
       margin: 0 auto;
       overflow: hidden; }
-      article.content .carousel > div img {
+      article.home .carousel > div img {
         margin: 0 auto;
         max-height: 500px;
         width: 100%; }
-        article.content .carousel > div img + a {
+        article.home .carousel > div img + a {
           position: absolute;
           top: 0;
           bottom: 0;
@@ -740,26 +753,26 @@ article.content {
           right: 0;
           opacity: 0;
           transition: .5s ease;
-          background-color: rgba(0, 0, 0, 0.75); }
-          article.content .carousel > div img + a div {
+          background-color: rgba(0, 0, 0, 0.7); }
+          article.home .carousel > div img + a div {
             color: white;
             font-size: 20px;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%); }
-      article.content .carousel > div:hover a {
+      article.home .carousel > div:hover a {
         opacity: 1; }
-      article.content .carousel > div .carouselUnit {
+      article.home .carousel > div .carouselUnit {
         position: relative;
         width: 80%;
         margin: 0 auto; }
-  article.content button {
+  article.home button {
     color: blue; }
 
-.reviews {
+.reviewSample {
   padding: 50px 0; }
-  .reviews section {
+  .reviewSample section {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 5px;
     padding: 20px; }
@@ -777,6 +790,161 @@ footer {
     color: rgba(255, 255, 255, 0.75); }
     footer a:hover {
       color: white; }
+
+/******* Search Page ********/
+.search {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 40px; }
+  .search > h2 {
+    margin: 0;
+    margin-bottom: 2em; }
+    .search > h2 + input {
+      color: black;
+      min-width: 400px;
+      border-radius: 10px; }
+  .search + .searchResult {
+    min-height: 600px; }
+    .search + .searchResult .row section {
+      max-width: 300px;
+      text-align: center; }
+      @media (max-width: 699px) {
+        .search + .searchResult .row section {
+          float: none;
+          margin: 2em auto;
+          display: block; } }
+      .search + .searchResult .row section img {
+        width: 100%; }
+
+/******* Login Page ********/
+.login {
+  min-height: 550px; }
+  .login h2 {
+    margin-left: 1em; }
+  .login form {
+    width: 90%;
+    color: white;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 70px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    padding: 30px 20px;
+    text-align: center; }
+    .login form label {
+      margin-bottom: 10px; }
+    .login form input {
+      color: black;
+      margin-bottom: 10px; }
+      .login form input[type="submit"] {
+        background-color: rgba(255, 255, 255, 0.7); }
+        .login form input[type="submit"]:hover {
+          background-color: white; }
+
+/******** Review Page ******/
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 5px; }
+  .backdrop img {
+    margin: 0 auto;
+    display: block;
+    width: 70%; }
+
+.summary {
+  text-align: center; }
+  .summary section.container {
+    width: 65%; }
+
+/******** HOVER CSS ******/
+/* Hover Grow */
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform; }
+
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  z-index: 100; }
+
+/* Underline From Right */
+.hvr-underline-from-right {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  overflow: hidden; }
+
+.hvr-underline-from-right:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 100%;
+  right: 0;
+  bottom: 0;
+  background: #2098D1;
+  height: 4px;
+  -webkit-transition-property: left;
+  transition-property: left;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out; }
+
+.hvr-underline-from-right:hover:before, .hvr-underline-from-right:focus:before, .hvr-underline-from-right:active:before {
+  left: 0; }
+
+/* Float Shadow */
+.hvr-float-shadow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform; }
+
+.hvr-float-shadow:before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: 100%;
+  left: 5%;
+  height: 10px;
+  width: 90%;
+  opacity: 0;
+  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, transparent 80%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, transparent 80%);
+  /* W3C */
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform, opacity;
+  transition-property: transform, opacity; }
+
+.hvr-float-shadow:hover, .hvr-float-shadow:focus, .hvr-float-shadow:active {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  /* move the element up by 5px */ }
+
+.hvr-float-shadow:hover:before, .hvr-float-shadow:focus:before, .hvr-float-shadow:active:before {
+  opacity: 1;
+  -webkit-transform: translateY(5px);
+  transform: translateY(5px);
+  /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */ }
 
 .button,
 button,

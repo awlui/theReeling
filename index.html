@@ -12,10 +12,13 @@
 	</head>
 	<body>
 		<nav>
-			<h1>The Reeling</h1>
-			<a href="">Log In</a>
+			<h1><a class="hvr-float-shadow" href="index.html">The Reeling</a></h1>
+			<div>
+				<a href="login.html">Login</a>
+				<a href="search.html">Search</a>
+			</div>
 		</nav>
-		<article class="content">
+		<article class="home">
 				<div class="carousel">
 					<div>
 						<div class="carouselUnit">
@@ -39,7 +42,7 @@
 						<div class="carouselUnit">
 							<!-- <img src="https://images7.alphacoders.com/325/325547.jpg" alt=""> -->
 							<img src="https://images7.alphacoders.com/325/325547.jpg" data-poster="http://pre01.deviantart.net/47b3/th/pre/i/2016/062/0/7/spirit_of_the_demon___howl_s_moving_castle_poster_by_edwardjmoran-d9trrjf.jpg" data-default="https://images7.alphacoders.com/325/325547.jpg" alt="">
-							<a class="overlay">
+							<a href="#three" class="overlay">
 								<div>Howl's Moving Castle</div>
 							</a>
 						</div>
@@ -64,18 +67,19 @@
 								<h3>Write your review today!</h3>
 							</section>
 							<form action="" class="row">
-								<div class="desktop-c-6 tablet-c-12">
+								<section class="desktop-c-6 tablet-c-12">
 									<label for="">First name</label>
 									<input type="text" name="firstName">
 									<label for="">Last name</label>
 									<input type="text" name="lastName">
-								</div>
-								<div class="desktop-c-6 tablet-c-12">
+								</section>
+								<section class="desktop-c-6 tablet-c-12">
 									<label for="">Username</label>
 									<input type="text" name="userName">
 									<label for="">E-mail</label>
 									<input type="text" name="email">
-								</div>
+								</section>
+								<span>Or <a href="#login">Log In</a></span>
 								<input type="submit" value="submit">
 							</form>
 						</article>
@@ -84,11 +88,11 @@
 			</article>
 		</div>
 		<section class="banner">
-			<h2>Reviews</h2>
+			<h2>Search</h2>
 		</section>
 		<article class="container">
 			<div class="row">
-				<article class="desktop-c-12 reviews">
+				<article class="desktop-c-12 reviewSampler">
 					<section id="one" class="desktop-c-6 tablet-c-6 mobile-c-12">
 						<h2>Spirited Away</h2>
 						<p>I first watch Spirited Away in the Sixth Grade and, even then, I knew there was something special about this movie... <a href="">Full Review</a></p>
@@ -99,7 +103,7 @@
 						<p>I watched Howl's Moving Castle a couple of years after Spirited Away, created by the same director, the masterful Hayao Miyazaki. I noticed immediately the magic imbued in the filmmaking yet there was something that distinguished it from its older sibling...<a href="">Full Review</a></p>
 						<span>-Andy Lui</span>
 					</section>
-					<section class="desktop-c-6 tablet-c-6 mobile-c-12">
+					<section id="three" class="desktop-c-6 tablet-c-6 mobile-c-12">
 						<h2>Interstellar</h2>
 						<p>I watched Howl's Moving Castle a couple of years after Spirited Away, created by the same director, the masterful Hayao Miyazaki. I noticed immediately the magic imbued in the filmmaking yet there was something that distinguished it from its older sibling...<a href="">Full Review</a></p>
 						<span>-Andy Lui</span>
