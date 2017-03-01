@@ -14,7 +14,7 @@ $(function() {
 
 $(function() {
 	$(window).on('resize', function(evt) {
-		$('img', '.carousel').each(function() {
+		$('img', '.carousel, .backdrop').each(function() {
 			var $this = $(this);
 		if ($(window).width() < 700) {
 			if ($this.data('poster')) {

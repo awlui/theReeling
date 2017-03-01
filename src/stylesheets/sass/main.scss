@@ -81,9 +81,10 @@ article.signUp {
 	}
 	& + form {
 		color: rgba(127,115,119,1);
-		padding: 5px
+		padding: 5px;
+		padding-top: 20px;
 		input {
-			background-color: rgba(127,115,119,0.5);
+			background-color: rgba(255,255,255,0.8);
 			border: solid 2px grey;
 		}
 		input[type="submit"] {
@@ -136,16 +137,17 @@ section.banner {
 
 article.home {
 	margin-bottom: 5px;
-	max-height: 600px;
 	background-color: $carousel-color;
 	padding: 2em 0;
 	.carousel {
-		width: 80%;
+		max-width: 80%;
 		margin: 0 auto;
+		height: 100%;
 		& > div {
 			margin: 0 auto;
 			overflow: hidden;
 			img {	
+					display: block;
 					margin: 0 auto;
 					max-height: 500px;
 					width: 100%;
@@ -174,7 +176,7 @@ article.home {
 				}
 				& .carouselUnit {
 					position: relative;
-					width: 80%;
+					max-width: 80%;
 					margin: 0 auto;
 				}
 			}
@@ -296,11 +298,111 @@ footer {
 	text-align: center;
 	section.container {
 		width: 65%;
+		span {
+			display: block;
+		}
+	}
+}
+
+.reviews {
+	text-align: center;
+	section.container {
+		margin-top: 10px;
+		.row section {
+			overflow: hidden;
+		}
+	}
+	img {
+		height: 300px;
+		display: block;
+		margin: 0 auto;
+	}
+}
+// Profile
+.profile {
+	text-align: center;
+	margin: 10px auto;
+		img {
+		display: block;
+		max-width: 500px;
+		width: 50%;
+		margin: 0 auto;
+	}
+	& > .row {
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	ul {
+		display: inline-block;
+		margin: 0 auto;
+	}
+	& + .banner {
+		margin-bottom: 10px;
+	}
+}
+
+//Account 
+.account {
+	margin-top: 50px;
+	.options {
+		background-color: beige;
+		margin-bottom: 10px;
+		min-height: 400px;
+		border-radius: 0 15px 0 0;
+		a {
+			color: blue;
+		}
+		& + section {
+			background-color: $light-black;
+			color: white;
+			border-radius: 0 15px 0 0;
+			margin-bottom: 10px;
+			padding: 5px;
+			text-align: center;
+			img {
+				width: 100%;
+				max-width: 300px;
+				display: block;
+				margin: 0 auto;
+			}
+		}
 	}
 }
 
 
 /******** HOVER CSS ******/
+
+/* Underline From Center */
+.hvr-underline-from-center {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  overflow: hidden;
+}
+.hvr-underline-from-center:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  background: #2098D1;
+  height: 4px;
+  -webkit-transition-property: left, right;
+  transition-property: left, right;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
+  left: 0;
+  right: 0;
+}
+
 
 /* Hover Grow */
 .hvr-grow {
