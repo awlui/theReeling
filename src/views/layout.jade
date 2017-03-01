@@ -2,9 +2,34 @@ doctype html
 html
   head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title= title
-    link(rel='stylesheet', href='/stylesheets/main.css')
-    script(src='/')
+    link(rel='stylesheet', href='slick/slick.css')
+    link(rel='stylesheet', href='slick/slick-theme.css')
+    link(rel='stylesheet', href='public/stylesheets/main.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lora')
   body
-    
+    nav
+      h1
+        a(class="hvr-float-shadow" href="/") The Reeling
+      div
+        a(href="login") Login
+        a(href="search") Search
     block content
+    footer
+      article.container
+        .row
+          section.desktop-c-12
+            h2
+            |  If you like what you see, feel free to peruse my 
+            a(href="https://awlui.github.io") Personal Website
+          section.desktop-c-6
+            p
+            |  Credits to
+            a(href="http://kenwheeler.github.io/slick/")
+            |  . The Carousel would be doable without it but the library makes it that much easier and gives me options ot change carousel options in the future.
+          section.desktop-c-6
+            p.
+              Coming Soon: This website is in the initial stages of static web design. It will be converted into a Node.js/Express Application supported by a RESTful API wrapping around a Mongodb database.
+    script(type="text/javascript", src="https://code.jquery.com/jquery-1.11.0.min.js")
+    script(type="text/javascript", src="httyps://code.jquery.com/jquery-migrate-1.2.1.min.js")
+    script(type="text/javascript", src="slick/slick.min.js")
+    script(type="text/javascript", src="public/scripts/main.min.js")
