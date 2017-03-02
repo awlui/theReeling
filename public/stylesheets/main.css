@@ -846,6 +846,49 @@ footer {
         .login form input[type="submit"]:hover {
           background-color: white; }
 
+/*********Edit Profile Page*********/
+.editProfile {
+  min-height: 550px;
+  margin-top: 70px; }
+  .editProfile form {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center; }
+    .editProfile form label {
+      margin-bottom: 10px;
+      display: inline-block;
+      text-align: left;
+      border-radius: 5px; }
+    .editProfile form input {
+      border-radius: 5px;
+      color: black;
+      display: inline-block;
+      margin-bottom: 10px;
+      width: 50%; }
+      .editProfile form input[type="submit"] {
+        background-color: rgba(255, 255, 255, 0.7);
+        float: right;
+        width: auto; }
+        .editProfile form input[type="submit"]:hover {
+          background-color: white; }
+      .editProfile form input[type="file"] {
+        display: inline-block;
+        width: 100%;
+        color: white; }
+    .editProfile form textarea {
+      border-radius: 5px;
+      width: 100%;
+      color: black;
+      min-height: 200px; }
+    .editProfile form div {
+      padding: 10px; }
+      .editProfile form div label {
+        display: inline; }
+    .editProfile form img {
+      max-width: 70%; }
+
 /******** Review Page ******/
 .backdrop {
   background-color: rgba(0, 0, 0, 0.7);
@@ -898,7 +941,9 @@ footer {
     min-height: 400px;
     border-radius: 0 15px 0 0; }
     .account .options a {
-      color: blue; }
+      color: rgba(0, 0, 0, 0.6); }
+      .account .options a:hover {
+        color: black; }
     .account .options + section {
       background-color: rgba(0, 0, 0, 0.7);
       color: white;
@@ -911,6 +956,50 @@ footer {
         max-width: 300px;
         display: block;
         margin: 0 auto; }
+
+.editReview {
+  min-height: 550px;
+  margin-top: 70px; }
+  .editReview section {
+    text-align: center; }
+    .editReview section h3 {
+      margin: 0; }
+    .editReview section img {
+      max-height: 500px; }
+  .editReview form {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center; }
+    .editReview form label {
+      margin-bottom: 10px;
+      display: inline-block;
+      text-align: left;
+      border-radius: 5px; }
+    .editReview form input {
+      border-radius: 5px;
+      margin: 10px; }
+      .editReview form input[type="submit"] {
+        background-color: rgba(255, 255, 255, 0.7);
+        float: right;
+        width: auto; }
+        .editReview form input[type="submit"]:hover {
+          background-color: white; }
+    .editReview form textarea {
+      border-radius: 5px;
+      width: 100%;
+      color: black;
+      height: 200px; }
+      .editReview form textarea#summary {
+        width: 80%;
+        height: 50px; }
+    .editReview form div {
+      padding: 10px; }
+      .editReview form div label {
+        display: inline; }
+    .editReview form img {
+      max-width: 70%; }
 
 /******** HOVER CSS ******/
 /* Underline From Center */

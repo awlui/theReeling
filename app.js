@@ -4,7 +4,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./src/routes/routes.js');
+var publicRoutes = require('./src/routes/publicRoutes.js');
+var privateRoutes = require('./src/routes/privateRoutes.js');
+
 
 var app = express();
 
@@ -22,7 +24,8 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/slick', express.static(path.join(__dirname, 'slick')));
 
 
-app.use(routes);
+app.use(publicRoutes);
+app.use(privateRoutes);
 
 app.get("/", function(req, res, next) {
   res.status(200);

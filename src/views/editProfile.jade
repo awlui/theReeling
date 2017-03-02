@@ -1,0 +1,22 @@
+extends layout
+block content
+  article.container
+    h2.hvr-underline-from-right Edit Profile
+    div.row.editProfile
+      form.desktop-c-6.mobile-c-12(action="post" enctype="multipart/form-data")
+        label(for="#profileImage") Profile Image:
+        img(src="public/images/profile.png")
+        input(id="profileImage", type="file", name="profileImage")
+        label(for="#biography") Biography:
+        textarea(name="biography", id="biography")
+        label Favorite Movies:
+        div
+          label 1.
+          input(type="text", name="movieOne")
+        div
+          label 2.
+          input(type="text", name="movieTwo")
+        div
+          label 3.
+          input(type="text" name="movieThree")
+        input(type="submit", value="Submit")

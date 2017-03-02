@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content='width=device-width, initial-scale=1.0'>
+		<link rel="stylesheet" href="slick/slick.css">
+		<link rel="stylesheet" href="slick/slick-theme.css">
+		<link rel="stylesheet" href="public/stylesheets/main.css">
+		<script src="http://localhost:35729/livereload.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+
+	</head>
+	<body>
+		<nav>
+			<h1><a class="hvr-float-shadow" href="index.html">The Reeling</a></h1>
+			<div>
+				<a href="search.html">Search</a>
+			</div>
+		</nav>
+		<article class="container">
+			<h2 class="hvr-underline-from-right">Add Review</h2>
+			<div class="row editReview">
+				<section class="desktop-c-6 mobile-c-12">
+					<h3>Spirited Away</h3>
+					<img src="http://fontmeme.com/images/USA_full-spirited-away-poster.jpg" alt="">
+				</section>
+				<form action="post" class="desktop-c-6 mobile-c-12">
+					<label for="review">Review:</label>
+					<textarea name="review" id="review"></textarea>
+					<label for="summary">Summary:</label>
+					<textarea name="reviewSummary" id="summary"></textarea>
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+		</article>
+		<footer>
+			<article class="container">
+				<div class="row">
+					<section class="desktop-c-12">
+						<h2>If you like what you see, feel free to peruse my <a href="https://awlui.github.io">Personal Website</a></h2>
+					</section>
+					<section class="desktop-c-6">
+						<p>Credits to <a href="http://kenwheeler.github.io/slick/">Ken Wheeler's Slick Library</a>. The carousel would be doable without it but the library makes it that much easier and gives me options to change carousel options in the future.</p>
+					</section>
+					<section class="desktop-c-6">
+						<p>Coming Soon: This website is in the initial stages of static web design. It will be converted into a Node.js/Express Application supported by a RESTful API wrapping around a Mongodb database.</p>
+					</section>
+				</div>
+			</article>
+		</footer>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  	<script type="text/javascript" src="slick/slick.min.js"></script>
+  	<script type="text/javascript" src="public/scripts/main.min.js"></script>
+	</body>
+</html>

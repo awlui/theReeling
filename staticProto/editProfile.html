@@ -14,12 +14,35 @@
 		<nav>
 			<h1><a class="hvr-float-shadow" href="index.html">The Reeling</a></h1>
 			<div>
-				<a href="login.html">Login</a>
 				<a href="search.html">Search</a>
 			</div>
 		</nav>
-
-
+		<article class="container">
+			<h2 class="hvr-underline-from-right">Edit Profile</h2>
+			<div class="row editProfile">
+				<form action="post" class="desktop-c-6 mobile-c-12" enctype="multipart/form-data">
+					<label for="profileImage">Profile Image:</label>
+					<img src="public/images/profile.png" alt="">
+					<input id="profileImage" type="file" name="profileImage">
+					<label for="#biography">Biography:</label>
+					<textarea name="biography" id="biography"></textarea>
+					<label>Favorite Movies:</label>
+					<div>
+						<label>1.  </label>
+						<input type="text" name="movieOne">
+					</div>
+					<div>
+						<label>2.  </label>
+						<input type="text" name="movieTwo">
+					</div>
+					<div>
+						<label>3.  </label>
+						<input type="text" name="movieThree">
+					</div>
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+		</article>
 		<footer>
 			<article class="container">
 				<div class="row">
