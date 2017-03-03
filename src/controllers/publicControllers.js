@@ -73,5 +73,19 @@ module.exports.movieInfo = function(req, res) {
 }
 
 module.exports.profile = function(req, res) {
-	res.render('profile', {});
+	res.render('profile', {
+		user: {
+			name: "Andy Lui",
+			image: "profile.png",
+			biography: "Hi me name is Andy.",
+			favorites: ["Spirited Away","Interstellar", "Forrest Gump"],
+			reviews: [
+			{
+				poster: "http://fontmeme.com/images/USA_full-spirited-away-poster.jpg",
+				title: "Spirited Away",
+				reviewParagraph: "A fantastic movie"
+			}]
+
+		}
+	});
 }
