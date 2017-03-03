@@ -1,0 +1,21 @@
+extends layout
+block content
+  section.container.profile
+    .row
+      h2= user.name
+      img(src="public/images/" + user.image)
+      h3 About Me:
+      p= user.biography
+      h3 Favorite Movies
+      ul
+        for movie in user.favorites
+          li= movie
+  section.banner
+    h2 Reviews
+  section.container.reviews
+    .row
+      for review in user.reviews
+        section.desktop-c-6.mobile-c-12
+          img(src=review.poster)
+          h3= review.title
+          p= review.reviewParagraph

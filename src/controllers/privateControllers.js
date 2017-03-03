@@ -1,5 +1,13 @@
 module.exports.account = function(req, res) {
-	res.render("account", {});
+	res.render("account", {
+		user: {
+			recentReview: {
+				poster: "http://fontmeme.com/images/USA_full-spirited-away-poster.jpg",
+				title: "Spirited Away",
+				reviewParagraph: "I first watch Spirited Away in the Sixth Grade and, even then, I knew there was something special about this movie..."
+			}
+		}
+	});
 }
 
 module.exports.addReview = function(req, res) {
