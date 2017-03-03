@@ -2,11 +2,11 @@ extends layout
 block content
   section.search
     h2 Search
-    input(type="text", value="name" placeholder="Movie")
+    input(type="text", name="search" placeholder="Movie")
   section.searchResult.container
     h2 Search Results:
     div.row
       for movie in movies
         section.desktop-c-4.tablet-c-6.mobile-c-12.posterContainer.hvr-grow
           a(href="movieInfo/"+movie.title)
-          img(src=movie.poster)
+            img(src=movie.poster)
