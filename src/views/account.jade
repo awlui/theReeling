@@ -12,7 +12,6 @@ block content
       section.desktop-c-8.mobile-c-12
         h3 Latest Review:
         section
-          img(src="http://fontmeme.com/images/USA_full-spirited-away-poster.jpg")
-          h3 Spirited Away
-          p.
-            I first watch Spirited Away in the Sixth Grade and, even then, I knew there was something special about this movie...
+          img(src=user.recentReview.poster)
+          h3= user.recentReview.title
+          p= user.recentReview.reviewParagraph

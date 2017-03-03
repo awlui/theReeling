@@ -4,11 +4,11 @@ block content
     h2.hvr-underline-from-right Edit Review
     div.row.editReview
       section.desktop-c-6.mobile-c-12
-        h3 Spirited Away
-        img(src="http://fontmeme.com/images/USA_full-spirited-away-poster.jpg")
+        h3= review.title
+        img(src=review.poster)
       form.desktop-c-6.mobile-c-12(action="post")
         label(for="review") Review:
-        textarea(name="review", id="review")
+        textarea(name="review", id="review")= review.reviewParagraph
         label(for="summary") Summary:
-        textarea(name="reviewSummary", id="summary")
+        textarea(name="reviewSummary", id="summary")= review.summary
         input(type="submit" value="Submit")

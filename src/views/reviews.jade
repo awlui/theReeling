@@ -4,8 +4,9 @@ block content
     h2 Reviews
     div.row
       section.desktop-c-6.mobile-c-12
-        a(href="movieInfo")
-          img(src="http://fontmeme.com/images/USA_full-spirited-away-poster.jpg")
-        h3 Spirited Away
-        a(href="editReview") Edit Review
-        p I first watch Spirited Away in the Sixth Grade and, even then, I knew there was something special about this movie...
+        each review in user.reviews
+          a(href="movieInfo/"+review.title)
+            img(src=review.poster)
+          h3= review.title
+          a(href="editReview/"+review.id) Edit Review
+          p= review.reviewParagraph
