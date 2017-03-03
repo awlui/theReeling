@@ -5,9 +5,9 @@ var privateControllers = require('../controllers/privateControllers')
 
 router.get('/account', privateControllers.account);
 
-router.get('/addReview', privateControllers.addReview);
+router.get('/addReview/:movieId', privateControllers.addReview);
 
-router.get('/editReview', privateControllers.editReview);
+router.get('/editReview/:reviewId', privateControllers.editReview);
 
 router.get('/editProfile', privateControllers.editProfile);
 

@@ -9,6 +9,6 @@ block content
       form.desktop-c-6.mobile-c-12(action="post")
         label(for="review") Review:
         textarea(name="review", id="review")= review.reviewParagraph
-        label(for="summary") Summary:
+        label(for="summary" value=review.summary) Summary:
         textarea(name="reviewSummary", id="summary")= review.summary
         input(type="submit" value="Submit")

@@ -11,17 +11,46 @@ module.exports.account = function(req, res) {
 }
 
 module.exports.addReview = function(req, res) {
-	res.render("addReview", {});
+	res.render("addReview", {
+		movie: {
+			title: "Spirited Away",
+			poster: "http://fontmeme.com/images/USA_full-spirited-away-poster.jpg",
+
+		}
+	});
 }
 
 module.exports.editReview = function(req, res) {
-	res.render("editReview", {});
+	res.render("editReview", {
+		review: {
+			title: "Spirited Away",
+			poster: "http://fontmeme.com/images/USA_full-spirited-away-poster.jpg",
+			reviewParagraph: "",
+			summary: ""
+		}
+	});
 }
 
 module.exports.editProfile = function(req, res) {
-	res.render("editProfile", {});
+	res.render("editProfile", {
+		user: {
+			biography: "the names andy",
+			image: "profile.png",
+			favorites: ["Spirited Away"]
+		}
+	});
 }
 
 module.exports.reviews = function(req, res) {
-	res.render("profile", {});
+	res.render("reviews", {
+		user: {
+			reviews: [
+			{
+				title: "Spirited Away",
+				poster: "http://fontmeme.com/images/USA_full-spirited-away-poster.jpg",
+				id: 7,
+				reviewParagraph: "not much of a review here"
+			}]
+		}
+	});
 }
