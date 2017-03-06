@@ -5,7 +5,7 @@ $('input[name="search"]', 'section.search').on('keyup', function() {
 		}, function(data) {
 			$root = $('section.searchResult div.row');
 			for (each in data.results) {
-				var $new = $('section.desktop-c-4.tablet-c-6.mobile-c-12.posterContainer.hvr-grow');
+				var $new = $('<div>hi</div>');
 				$root.append($new);
 			}
 		})
