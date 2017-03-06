@@ -1,5 +1,6 @@
 $(function() {
 	$('input[name="search"]', 'section.search').on('keyup', function() {
+		$('div.row', 'section.searchResult').empty();
 		if ($(this).val().length > 3) {
 			$.getJSON('https://cryptic-oasis-17522.herokuapp.com/searchAPI', {
 				search: $(this).val()
