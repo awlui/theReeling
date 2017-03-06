@@ -35,7 +35,8 @@ module.exports = function(grunt) {
 			},
 			dev: {
 				files: {
-					'public/scripts/main.min.js': ['src/scripts/main.js']
+					'public/scripts/main.min.js': ['src/scripts/main.js'],
+					'public/scripts/ajax.min.js': ['src/scripts/ajax.js']
 				}
 			}
 		}

@@ -8,6 +8,8 @@ router.get('/login', publicControllers.login);
 
 router.get('/search', publicControllers.search);
 
+router.get('/searchAPI', publicControllers.searchAPI);
+
 router.get('/movieInfo', publicControllers.movieInfo);
 
 router.get('/profile', publicControllers.profile);

@@ -1,3 +1,5 @@
+var request = require('request');
+
 module.exports.homepage = function(req, res) {
 	res.render('index', {
 		movies: [
@@ -54,7 +56,30 @@ module.exports.search = function(req, res) {
 	});
 }
 
+module.exports.searchAPI = function(req, res) {
+	var query = req.query.search;
+	var requestOptions = {
+		url: "https://api.themoviedb.org/3/search/movie",
+		method: "GET",
+		json: {},
+		qs: {
+			query: query,
+			api_key: "092a9f1d719e99b224ddc5fcde8ddaba"
+		}
+	}
+	request(requestOptions, function(err, res, body) {
+		if (err) {
+			console.log(err);
+		} else if (res.statusCode === 200) {
+			console.log(body);
+		} else {
+			console.log(res.statusCode);
+		}
+	});
+}
+
 module.exports.movieInfo = function(req, res) {
+
 	res.render('movieInfo', {
 		movie: {
 			poster: "http://fontmeme.com/images/USA_full-spirited-away-poster.jpg",

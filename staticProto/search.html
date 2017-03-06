@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content='width=device-width, initial-scale=1.0'>
-		<link rel="stylesheet" href="slick/slick.css">
-		<link rel="stylesheet" href="slick/slick-theme.css">
-		<link rel="stylesheet" href="public/stylesheets/main.css">
+		<link rel="stylesheet" href="/slick/slick.css">
+		<link rel="stylesheet" href="/slick/slick-theme.css">
+		<link rel="stylesheet" href="/public/stylesheets/main.css">
 		<script src="http://localhost:35729/livereload.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 
@@ -57,7 +57,32 @@
 		</footer>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  	<script type="text/javascript" src="slick/slick.min.js"></script>
-  	<script type="text/javascript" src="public/scripts/main.min.js"></script>
+  	<script type="text/javascript" src="/slick/slick.min.js"></script>
+  	<script type="text/javascript" src="/public/scripts/main.min.js"></script>
+  	<script type="text/javascript">
+  		$('input[name="search"]', 'section.search').on('keyup', function() {
+  			if ($(this).val().length > 3) {
+  				$.getJSON('localhost:3000', {
+  					query: $(this).val()
+  				}, function(data) {
+  					console.log(data.results[0].title)
+  				})
+  			// 	$.ajax({
+	  		// 		url: 'https://api.themoviedb.org/3/search/movie?callback=?',
+	  		// 		dataType: 'jsonp',
+	  		// 		data: {
+	  		// 			api_key: '092a9f1d719e99b224ddc5fcde8ddaba',
+	  		// 			query: $(this).val()
+	  		// 		},
+	  		// 		success: function(data) {
+	  		// 			console.log(data.results)
+	  		// 			for (key in data.results) {
+	  		// 				console.log(data.results[key].title);
+	  		// 			}
+	  		// 		}
+  			// })
+  			}
+  		})
+  	</script>
 	</body>
 </html>
