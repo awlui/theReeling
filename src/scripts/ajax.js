@@ -4,12 +4,16 @@ $(function() {
 			$.getJSON('https://cryptic-oasis-17522.herokuapp.com/searchAPI', {
 				search: $(this).val()
 			}, function(data) {
-				$root = $('div#test');
+				var $section, $link;
+				var $root = $('div.row', 'section.searchResult');
 				for (each in data.results) {
-					var $new = $('<div>hi</div>');
-					$root.append($new);
+					$section = $('section.desktop-c-4.tablet-c-6.mobile-c-12.posterContainer.hvr-grow');
+					$link = $('<a href="movieInfo/' + data.results[each].title + '"></a>');
+					$link.append('<img src=' + data.results[each].poster + '>');
+					$section.append($link);
+					$root.append($section);
 				}
-			})
+			});
 		}
 	});
 });
