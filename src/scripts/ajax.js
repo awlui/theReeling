@@ -3,7 +3,7 @@ $('input[name="search"]', 'section.search').on('keyup', function() {
 		$.getJSON('https://cryptic-oasis-17522.herokuapp.com/searchAPI', {
 			search: $(this).val()
 		}, function(data) {
-			$root = $('section.searchResult div.row');
+			$root = $('div#test');
 			for (each in data.results) {
 				var $new = $('<div>hi</div>');
 				$root.append($new);
