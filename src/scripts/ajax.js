@@ -5,10 +5,11 @@ $(function() {
 				search: $(this).val()
 			}, function(data) {
 				$root = $('div#test');
-				for (each in data.results) {
-					var $new = $('<div>hi</div>');
-					$root.append($new);
-				}
+				$root.append("<div></div>");
+				// for (each in data.results) {
+				// 	var $new = $('<div>hi</div>');
+				// 	$root.append($new);
+				// }
 			})
 		}
 	});
