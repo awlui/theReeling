@@ -66,8 +66,8 @@ module.exports.searchAPI = function(req, res) {
 			query: query,
 			api_key: "092a9f1d719e99b224ddc5fcde8ddaba"
 		}
-	}
-	request(requestOptions, function(err, res, body) {
+	};
+	request(requestOptions, function(err, response, body) {
 		if (err) {
 			console.log(err);
 		} else if (res.statusCode === 200) {
