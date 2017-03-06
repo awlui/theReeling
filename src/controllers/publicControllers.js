@@ -71,7 +71,7 @@ module.exports.searchAPI = function(req, res) {
 		if (err) {
 			console.log(err);
 		} else if (res.statusCode === 200) {
-			console.log(body);
+			res.send(body);
 		} else {
 			console.log(res.statusCode);
 		}
