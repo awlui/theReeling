@@ -15,7 +15,7 @@ router.get('/searchAPI', publicControllers.searchAPI);
 
 router.get('/movieInfo/:movieId', publicControllers.movieInfo);
 
-router.get('/profile', publicControllers.profile);
+router.get('/profile/:userId', publicControllers.profile);
 
 //POST
 

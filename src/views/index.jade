@@ -43,14 +43,13 @@ block content
   section.banner
     h2 Reviews
   article.container
-    div.row
-      article.desktop-c-12.reviewSampler
-        -var arr = ["one", "two", "three"];
-        -var count = 0;
-        each review in reviews
-          section.desktop-c-6.tablet-c-6.mobile-c-12(id=arr[count])
-            h2
-              a(href="movieInfo/"+review.Movie.id)= review.Movie.title
-            p= review.summary
-            span= "-" + review.User.firstName + " " + review.User.lastName
-          - count++;
+    div.row.reviewSample
+      -var arr = ["one", "two", "three"];
+      -var count = 0;
+      each review in reviews
+        section.desktop-c-6.tablet-c-6.mobile-c-12(id=arr[count])
+          h2
+            a(href="movieInfo/"+review.Movie.id)= review.Movie.title
+          p= review.summary
+          span= "-" + review.User.firstName + " " + review.User.lastName
+        - count++;

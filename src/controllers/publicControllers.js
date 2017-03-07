@@ -191,19 +191,42 @@ module.exports.movieInfo = function(req, res) {
 }
 
 module.exports.profile = function(req, res) {
-	res.render('profile', {
-		user: {
-			name: "Andy Lui",
-			image: "profile.png",
-			biography: "Hi me name is Andy.",
-			favorites: ["Spirited Away","Interstellar", "Forrest Gump"],
-			reviews: [
-			{
-				poster: "http://fontmeme.com/images/USA_full-spirited-away-poster.jpg",
-				title: "Spirited Away",
-				reviewParagraph: "A fantastic movie"
-			}]
-
+	var requestOptions = {
+		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + req.params.userId,
+		method: "GET",
+		json: {}
+	};
+	request(requestOptions, function(err, response, body) {
+		console.log(body);
+		if (err) {
+			console.log(err);
+		} else if (response.statusCode === 200) {
+			res.render('profile', {
+				user: {
+					name: body.firstName + " " + body.lastName,
+					image: body.image,
+					biography: body.biography,
+					favorites: body.favorites,
+					reviews: body.reviews
+				}
+			});
+		} else {
+			res.send(response.statusCode);
 		}
 	});
+	// res.render('profile', {
+	// 	user: {
+	// 		name: "Andy Lui",
+	// 		image: "profile.png",
+	// 		biography: "Hi me name is Andy.",
+	// 		favorites: ["Spirited Away","Interstellar", "Forrest Gump"],
+	// 		reviews: [
+	// 		{
+	// 			poster: "http://fontmeme.com/images/USA_full-spirited-away-poster.jpg",
+	// 			title: "Spirited Away",
+	// 			reviewParagraph: "A fantastic movie"
+	// 		}]
+
+	// 	}
+	// });
 }

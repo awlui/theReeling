@@ -670,7 +670,7 @@ article.jumbotron {
   background-size: 6em;
   text-align: center;
   color: white;
-  padding: 70px 0; }
+  padding: 150px 0; }
 
 article.signUp {
   background-image: url("../images/128-168.jpg");
@@ -745,7 +745,6 @@ article.home {
       article.home .carousel > div img {
         display: block;
         margin: 0 auto;
-        max-height: 500px;
         width: 100%; }
         article.home .carousel > div img + a {
           position: absolute;
@@ -776,9 +775,10 @@ article.home {
 .reviewSample {
   padding: 50px 0; }
   .reviewSample section {
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 5px;
-    padding: 20px; }
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    height: 300px; }
 
 footer {
   background-color: rgba(0, 0, 0, 0.8);
