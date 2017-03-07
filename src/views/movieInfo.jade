@@ -1,14 +1,14 @@
 extends layout
 block content
   section.backdrop
-    img(src=movie.lgPoster, data-poster=movie.poster, data-default=movie.lgPoster)
+    img(src="https://image.tmdb.org/t/p/w1280" + movie.banner, data-poster="https://image.tmdb.org/t/p/w500" + movie.poster, data-default="https://image.tmdb.org/t/p/original" + movie.banner)
   section.banner
     h2 Summary
   article.summary
     section.container
       div.row
         section.desktop-c-12
-          h3.hvr-underline-from-center Spirited Away
+          h3.hvr-underline-from-center movie.title
           span= movie.releaseDate
           span Movie DB rating: #{movie.rating}
           p= movie.summary

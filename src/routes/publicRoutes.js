@@ -10,7 +10,7 @@ router.get('/search', publicControllers.search);
 
 router.get('/searchAPI', publicControllers.searchAPI);
 
-router.get('/movieInfo', publicControllers.movieInfo);
+router.get('/movieInfo/:movieId', publicControllers.movieInfo);
 
 router.get('/profile', publicControllers.profile);
 

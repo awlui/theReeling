@@ -79,20 +79,87 @@ module.exports.searchAPI = function(req, res) {
 }
 
 module.exports.movieInfo = function(req, res) {
+	var requestOptions = {
+		url: "https://blooming-sea-71496.herokuapp.com/api/movie/" + req.params.movieId,
+		method: "GET",
+		json: {}
+	}
+	request(requestOptions, function(err, response, body) {
+		console.log("STAGE1")
+		var requestOptions;
+		if (err) {
+			console.log('error')
+			console.log(err);
+		} else if (response.statusCode === 200) {
+			res.render('movieInfo', {
+				movie: {
+					poster: body.poster,
+					banner: body.banner,
+					summary: body.summary,
+					rating: body.rating,
+					releaseDate: body.releaseDate,
+					reviews: body.reviews,
+					id: body.id
+				}
+			});
+		} else if (response.statusCode === 404) {
+			requestOptions = {
+				url: "https://api.themoviedb.org/3/movie/" + req.params.movieId,
+				method: "GET",
+				json: {},
+				qs: {
+					api_key: "092a9f1d719e99b224ddc5fcde8ddaba"
+				}
+			}
+			request(requestOptions, function(err, response, body) {
+				console.log("STAGE2", response.statusCode)
+				var requestOptions;
+				if (err) {
+					console.log('error');
+					console.log(err);
+				} else if (response.statusCode === 200) {
+					requestOptions = {
+						url: "https://blooming-sea-71496.herokuapp.com/api/movie/" + req.params.movieId,
+						method: "POST",
+						json: {
+							poster: body.poster_path,
+							banner: body.backdrop_path,
+							summary: body.overview,
+							rating: body.vote_average,
+							releaseDate: body.release_date,
+							title: body.title
+						},
+					}
+					request(requestOptions, function(err, response, body) {
+						console.log("STAGE3", response.statusCode)
+						if (err) {
+							console.log('error');
+							console.log(err);
+						} else if (response.statusCode === 201) {
+							console.log("over here");
+							console.log(body)
+							res.render('movieInfo', {
+								movie: {
+									poster: body.poster,
+									banner: body.banner,
+									summary: body.summary,
+									rating: body.rating,
+									releaseDate: body.releaseDate,
+									reviews: body.reviews,
+									id: body.id
+								}
+							});
+						} else {
+							console.log(response.statusCode)
+						}
+					});
+				} else {
+					console.log(response.statusCode);
+				}
+			})
 
-	res.render('movieInfo', {
-		movie: {
-			poster: "http://fontmeme.com/images/USA_full-spirited-away-poster.jpg",
-			lgPoster: "https://images4.alphacoders.com/203/203996.jpg",
-			summary: "Spirited Away is an Oscar winning Japanese animated film about a ten year old girl who wanders away from her parents along a path that leads to a world ruled by strange and unusual monster-like animals. Her parents have been changed into pigs along with others inside a bathhouse full of these creatures. Will she ever see the world how it once was?",
-			rating: "8.2",
-			releaseDate: "2001-07-20",
-			reviews: [
-			{
-				reviewParagraph: "Spirited away wisks you away to a magical world and teaches us as, filmgoers, that movies don't have to transition from action to action sequence to be filled with excitement. Also, this animated film shows us that human emotion can very well be portrayed on canvas.",
-				reviewer: "Andy Lui",
-				image: "https://scontent-lax3-2.xx.fbcdn.net/v/t1.0-1/c0.26.320.320/p320x320/12814222_1208226805873810_6036424718898254150_n.jpg?oh=896921eef3a6e3ef2a12cd1bdd5b9cab&oe=59258F5B"
-			}]
+		} else {
+			console.log(res.statusCode)
 		}
 	});
 }
