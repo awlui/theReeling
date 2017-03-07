@@ -1,3 +1,5 @@
+var request = require('request');
+
 module.exports.account = function(req, res) {
 	res.render("account", {
 		user: {
@@ -10,17 +12,51 @@ module.exports.account = function(req, res) {
 	});
 }
 
-module.exports.addReview = function(req, res) {
-	res.render("addReview", {
-		movie: {
-			title: "Spirited Away",
-			poster: "http://fontmeme.com/images/USA_full-spirited-away-poster.jpg",
+module.exports.addReviewForm = function(req, res) {
+	var requestOptions = {
+		url: "https://blooming-sea-71496.herokuapp.com/api/movie/" + req.params.movieId,
+		method: "GET",
+		json: {}
+	}
+	request(requestOptions, function(err, response, body) {
+		if (err) {
+			console.log(err);
 
+		} else if (response.statusCode === 200) {
+			res.render('addReview', {
+				movie: body
+			});
+		} else {
+			console.log(response.statusCode);
 		}
 	});
 }
 
-module.exports.editReview = function(req, res) {
+module.exports.addReview = function(req, res) {
+	var requestOptions = {
+		url: "https://blooming-sea-71496.herokuapp.com/api/movie/" + req.params.movieId + "/review/" + res.locals.currentUser.id,
+		method: "POST",
+		json: {
+			userId: res.locals.currentUser.id,
+			movieId: req.params.movieId,
+			reviewParagraph: req.body.reviewParagraph,
+			summary: req.body.summary
+		}
+	}
+	request(requestOptions, function(err, response, body) {
+		if (err) {
+			console.log(err);
+			console.log('fail');
+		} else if (response.statusCode === 201) {
+			console.log('success')
+			res.redirect("/movieInfo/" + req.params.movieId);
+		} else {
+			console.log(response.statusCode, "fail");
+		}
+	})
+}
+
+module.exports.editReviewForm = function(req, res) {
 	res.render("editReview", {
 		review: {
 			title: "Spirited Away",

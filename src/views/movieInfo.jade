@@ -8,20 +8,20 @@ block content
     section.container
       div.row
         section.desktop-c-12
-          h3.hvr-underline-from-center movie.title
+          h2.hvr-underline-from-center= movie.title
           span= movie.releaseDate
           span Movie DB rating: #{movie.rating}
           p= movie.summary
   section.banner
-    h2 reviews
+    h2 Reviews
   article.reviews
     section.container
-      a(href="addReview/"+movie.id) Add Review
+      a(href="/addReview/"+movie.id) Add Review
       div.row
         each review in movie.reviews
           section.desktop-c-6.mobile-c-12
-            img(src=review.image)
-            h3.hvr-underline-from-right= review.reviewer
+            img(src=review.User.image)
+            h3.hvr-underline-from-right= review.User.firstName + " " + review.User.lastName
             p= review.reviewParagraph
               
 

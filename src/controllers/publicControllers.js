@@ -1,37 +1,77 @@
 var request = require('request');
 
 module.exports.homepage = function(req, res) {
-	res.render('index', {
-		movies: [
-		{
-			title: "Spirited away",
-			poster: "http://fontmeme.com/images/USA_full-spirited-away-poster.jpg",
-			lgPoster: "https://images4.alphacoders.com/203/203996.jpg",
-			reviewSummary: "I first watched Spirited Away in the Sixth Grade and, even then, I knew there was something special about this movie...",
-			reviewer: "Andy Lui"
-
-
-		},
-		{
-			title: "Interstellar",
-			poster: "https://s-media-cache-ak0.pinimg.com/originals/a5/13/df/a513df413b50b1c5de6e2e98b54691d8.jpg",
-			lgPoster: "https://blurppy.files.wordpress.com/2014/05/screen-shot-2014-05-17-at-10-06-40-pm.png",
-			reviewSummary: "Directed by Christopher Nolan, Interstellar is a unique film that plays with time and space in a way that has never been done before in cinema. It is a science-motivated movie but also has a potent human element...",
-			reviewer: "Andy Lui"
-		},
-		{
-			title: "Howl's Moving Castle",
-			poster: "http://pre01.deviantart.net/47b3/th/pre/i/2016/062/0/7/spirit_of_the_demon___howl_s_moving_castle_poster_by_edwardjmoran-d9trrjf.jpg",
-			lgPoster: "https://images7.alphacoders.com/325/325547.jpg",
-			reviewSummary: "I watched Howl's Moving Castle a couple of years after Spirited Away, created by the same director, the masterful Hayao Miyazaki. I noticed immediately the magic imbued in the filmmaking yet there was something that distinguished it from its older sibling...",
-			reviewer: "Andy Lui"
-		}
-		]
+	var requestOptions = {
+		url: "https://blooming-sea-71496.herokuapp.com/api/review/3",
+		method: "GET",
+		json: {}
+	}
+	request(requestOptions, function(err, response, body) {
+		console.log(response.statusCode);
+		res.render('index', {
+			reviews: body
+		});
 	});
+	// res.render('index', {
+	// 	movies: [
+	// 	{
+	// 		title: "Spirited away",
+	// 		poster: "http://fontmeme.com/images/USA_full-spirited-away-poster.jpg",
+	// 		lgPoster: "https://images4.alphacoders.com/203/203996.jpg",
+	// 		reviewSummary: "I first watched Spirited Away in the Sixth Grade and, even then, I knew there was something special about this movie...",
+	// 		reviewer: "Andy Lui"
+
+
+	// 	},
+	// 	{
+	// 		title: "Interstellar",
+	// 		poster: "https://s-media-cache-ak0.pinimg.com/originals/a5/13/df/a513df413b50b1c5de6e2e98b54691d8.jpg",
+	// 		lgPoster: "https://blurppy.files.wordpress.com/2014/05/screen-shot-2014-05-17-at-10-06-40-pm.png",
+	// 		reviewSummary: "Directed by Christopher Nolan, Interstellar is a unique film that plays with time and space in a way that has never been done before in cinema. It is a science-motivated movie but also has a potent human element...",
+	// 		reviewer: "Andy Lui"
+	// 	},
+	// 	{
+	// 		title: "Howl's Moving Castle",
+	// 		poster: "http://pre01.deviantart.net/47b3/th/pre/i/2016/062/0/7/spirit_of_the_demon___howl_s_moving_castle_poster_by_edwardjmoran-d9trrjf.jpg",
+	// 		lgPoster: "https://images7.alphacoders.com/325/325547.jpg",
+	// 		reviewSummary: "I watched Howl's Moving Castle a couple of years after Spirited Away, created by the same director, the masterful Hayao Miyazaki. I noticed immediately the magic imbued in the filmmaking yet there was something that distinguished it from its older sibling...",
+	// 		reviewer: "Andy Lui"
+	// 	}
+	// 	]
+	// });
+}
+
+module.exports.loginForm = function(req, res) {
+	res.render('login', {});
 }
 
 module.exports.login = function(req, res) {
-	res.render('login', {});
+	var requestOptions = {
+		url: "https://blooming-sea-71496.herokuapp.com/api/user/",
+		method: "POST"
+	}
+}
+
+module.exports.signUp = function(req, res) {
+	var requestOptions = {
+		url: "https://blooming-sea-71496.herokuapp.com/api/user",
+		method: "POST",
+		json: {
+			firstName: req.body.firstname,
+			lastName: req.body.lastname,
+			username: req.body.username,
+			password: req.body.password
+		}
+	}
+	request(requestOptions, function(err, response, body) {
+		if (err) {
+			console.log(err);
+		} else if (response.statusCode === 201) {
+			res.redirect('/account');
+		} else {
+			console.log(response.statusCode);
+		}
+	});
 }
 
 module.exports.search = function(req, res) {
@@ -85,18 +125,19 @@ module.exports.movieInfo = function(req, res) {
 		json: {}
 	}
 	request(requestOptions, function(err, response, body) {
-		console.log("STAGE1")
 		var requestOptions;
 		if (err) {
 			console.log('error')
 			console.log(err);
 		} else if (response.statusCode === 200) {
+			console.log(body);
 			res.render('movieInfo', {
 				movie: {
 					poster: body.poster,
 					banner: body.banner,
 					summary: body.summary,
 					rating: body.rating,
+					title: body.title,
 					releaseDate: body.releaseDate,
 					reviews: body.reviews,
 					id: body.id
@@ -112,10 +153,8 @@ module.exports.movieInfo = function(req, res) {
 				}
 			}
 			request(requestOptions, function(err, response, body) {
-				console.log("STAGE2", response.statusCode)
 				var requestOptions;
 				if (err) {
-					console.log('error');
 					console.log(err);
 				} else if (response.statusCode === 200) {
 					requestOptions = {
@@ -131,24 +170,11 @@ module.exports.movieInfo = function(req, res) {
 						},
 					}
 					request(requestOptions, function(err, response, body) {
-						console.log("STAGE3", response.statusCode)
 						if (err) {
-							console.log('error');
 							console.log(err);
 						} else if (response.statusCode === 201) {
-							console.log("over here");
-							console.log(body)
-							res.render('movieInfo', {
-								movie: {
-									poster: body.poster,
-									banner: body.banner,
-									summary: body.summary,
-									rating: body.rating,
-									releaseDate: body.releaseDate,
-									reviews: body.reviews,
-									id: body.id
-								}
-							});
+							res.redirect('/movieInfo/' + body.id);
+
 						} else {
 							console.log(response.statusCode)
 						}
@@ -159,7 +185,7 @@ module.exports.movieInfo = function(req, res) {
 			})
 
 		} else {
-			console.log(res.statusCode)
+			console.log(response.statusCode)
 		}
 	});
 }

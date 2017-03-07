@@ -5,12 +5,12 @@ block content
     .carousel
       -var count = 0;
       -var arr = ["one", "two", "three"];
-      each movie, index in movies
+      each review, index in reviews
         div
           .carouselUnit
-            img(src=movie.lgPoster, data-poster=movie.poster, data-default=movie.lgPoster)
+            img(src="https://image.tmdb.org/t/p/original" + review.Movie.banner, data-poster="https://image.tmdb.org/t/p/w500" + review.Movie.poster, data-default="https://image.tmdb.org/t/p/original" + review.Movie.banner)
             a(href="#"+arr[count], class="overlay")
-              div= movie.title
+              div= review.Movie.title
         - count++;
   section.banner
     h2  Sign Up!
@@ -25,7 +25,7 @@ block content
           article.signUp
             section.row
               h3 Write your review today!
-            form(action="", class="row")
+            form(action="/signUp", method="POST", class="row")
               section.desktop-c-6.tablet-c-12
                 label(for="#firstname") First name
                 input(id="firstname", type="text", name="firstname")
@@ -47,10 +47,10 @@ block content
       article.desktop-c-12.reviewSampler
         -var arr = ["one", "two", "three"];
         -var count = 0;
-        each movie in movies
+        each review in reviews
           section.desktop-c-6.tablet-c-6.mobile-c-12(id=arr[count])
             h2
-              a(href="movieInfo/"+movie.title)= movie.title
-            p= movie.reviewSummary
-            span= "-" + movie.reviewer
+              a(href="movieInfo/"+review.Movie.id)= review.Movie.title
+            p= review.summary
+            span= "-" + review.User.firstName + " " + review.User.lastName
           - count++;
