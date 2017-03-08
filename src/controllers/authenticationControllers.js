@@ -4,14 +4,6 @@ module.exports.loginForm = function(req, res) {
 	res.render('login', {});
 }
 
-module.exports.login = function(req, res) {
-	var requestOptions = {
-		url: "https://blooming-sea-71496.herokuapp.com/api/user/",
-		method: "POST"
-	}
-}
-
-
 module.exports.signUp = function(req, res, next) {
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/user",

@@ -7,7 +7,6 @@ var publicControllers = require('../controllers/publicControllers');
 
 router.get('/', publicControllers.homepage);
 
-router.get('/login', publicControllers.loginForm);
 
 router.get('/search', publicControllers.search);
 

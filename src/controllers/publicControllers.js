@@ -41,45 +41,8 @@ module.exports.homepage = function(req, res) {
 	// });
 }
 
-module.exports.loginForm = function(req, res) {
-	res.render('login', {});
-}
 
-module.exports.login = function(req, res) {
-	var requestOptions = {
-		url: "https://blooming-sea-71496.herokuapp.com/api/user/",
-		method: "POST"
-	}
-}
 
-module.exports.signUp = function(req, res, next) {
-	var requestOptions = {
-		url: "https://blooming-sea-71496.herokuapp.com/api/user",
-		method: "POST",
-		json: {
-			firstName: req.body.firstname,
-			lastName: req.body.lastname,
-			username: req.body.username,
-			password: req.body.password
-		}
-	}
-	request(requestOptions, function(err, response, body) {
-		if (err) {
-			console.log(err);
-		} else if (response.statusCode === 201) {
-			res.redirect('/account');
-		} else {
-			if (body.name === "SequelizeUniqueConstraintError") {
-				res.statusCode = 400;
-				res.send("Username is taken");
-			}
-			else {
-				console.log(response.statusCode);
-				next(response.statusCode);
-			}
-		}
-	});
-}
 
 module.exports.search = function(req, res) {
 	res.render('search');
@@ -203,19 +166,4 @@ module.exports.profile = function(req, res) {
 			res.send(response.statusCode);
 		}
 	});
-	// res.render('profile', {
-	// 	user: {
-	// 		name: "Andy Lui",
-	// 		image: "profile.png",
-	// 		biography: "Hi me name is Andy.",
-	// 		favorites: ["Spirited Away","Interstellar", "Forrest Gump"],
-	// 		reviews: [
-	// 		{
-	// 			poster: "http://fontmeme.com/images/USA_full-spirited-away-poster.jpg",
-	// 			title: "Spirited Away",
-	// 			reviewParagraph: "A fantastic movie"
-	// 		}]
-
-	// 	}
-	// });
 }

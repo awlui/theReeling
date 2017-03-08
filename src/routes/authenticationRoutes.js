@@ -4,7 +4,7 @@ var passport = require('passport');
 var authenticationControllers = require('../controllers/authenticationControllers')
 
 
-router.get('/login', authenticationControllers.login);
+router.get('/login', authenticationControllers.loginForm);
 
 router.post('/login', passport.authenticate("login", {
 	successRedirect: '/account',

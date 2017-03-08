@@ -100,14 +100,13 @@ module.exports.editReviewForm = function(req, res) {
 						summary: review.summary
 					}
 				});
-			} else if (response.statusCode === 400 || response.statusCode === 404) {
+			}
+		} else if (response.statusCode === 400 || response.statusCode === 404) {
 				res.render("4xx", {
 					message: review.message,
 					statusCode: response.statusCode
 				});
-			} else {
-
-			}
+	
 		} else {
 			res.send(response.statusCode);
 		}
