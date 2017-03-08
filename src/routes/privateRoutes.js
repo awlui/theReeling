@@ -10,7 +10,7 @@ router.get('/addReview/:movieId', privateControllers.addReviewForm);
 
 router.get('/editReview/:reviewId', privateControllers.editReviewForm);
 
-router.get('/reviews/:userId', privateControllers.reviews);
+router.get('/reviews', privateControllers.reviews);
 
 router.get('/editProfile/:userId', privateControllers.editProfileForm); 
 

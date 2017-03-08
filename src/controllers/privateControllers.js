@@ -118,7 +118,6 @@ module.exports.editReviewForm = function(req, res) {
 }
 
 module.exports.editReview = function(req, res) {
-	console.log(req.body.reviewParagraph);
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/review/" + req.params.reviewId,
 		method: "PUT",
@@ -165,7 +164,7 @@ module.exports.editProfile = function(req, res) {
 
 module.exports.reviews = function(req, res) {
 	var requestOptions = {
-		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + req.params.userId + "/review",
+		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id + "/review",
 		json: {},
 		method: "GET",
 	}
