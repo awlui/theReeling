@@ -19,8 +19,4 @@ router.get('/profile/:userId', publicControllers.profile);
 
 //POST
 
-// router.post('/login', )
-
-router.post('/signUp', publicControllers.signUp);
-
 module.exports = router;

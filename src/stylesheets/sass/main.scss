@@ -229,10 +229,16 @@ footer {
 			color: black;
 			min-width: 400px;
 			border-radius: 10px;
+			@include mq-mobile {
+				min-width: 300px;
+			}
 		}
 	}
 	& + .searchResult {
 		min-height: 600px;
+		@include mq-tablet {
+			text-align: center;
+		}
 		.row section {
 			height: 450px;
 			text-align: center;
@@ -367,10 +373,20 @@ footer {
 			overflow: hidden;
 		}
 	}
+	a {
+		display: inline-block;
+	}
 	img {
 		height: 300px;
 		display: block;
 		margin: 0 auto;
+		opacity: 0.8;
+		&:hover {
+			opacity: 1;
+		}
+	}
+	h3 {
+		display: block;
 	}
 }
 // Profile
@@ -399,11 +415,24 @@ footer {
 //Account 
 .account {
 	margin-top: 50px;
+	@include mq-tablet {
+		text-align: center;
+		h2 {
+		}
+	}
 	.options {
 		background-color: beige;
 		margin-bottom: 10px;
 		min-height: 400px;
 		border-radius: 0 15px 0 0;
+		line-height: 2em;
+		@include mq-mobile {
+			text-align: center;
+			min-height: auto;
+			ul {
+				list-style-type: none;
+			}
+		}
 		a {
 			color: rgba(0,0,0,0.6);
 			&:hover {

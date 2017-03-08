@@ -3,10 +3,15 @@ block content
   section.container.reviews
     h2 Reviews
     div.row
-      section.desktop-c-6.mobile-c-12
-        each review in user.reviews
-          a(href="movieInfo/"+review.title)
-            img(src=review.poster)
-          h3= review.title
-          a(href="editReview/"+review.id) Edit Review
-          p= review.reviewParagraph
+      if reviews
+        each review in reviews
+          section.desktop-c-6.mobile-c-12
+            a(href="/movieInfo/"+review.Movie.id)
+              img(src="https://image.tmdb.org/t/p/w500" + review.Movie.poster)
+            h3= review.title
+            if currentUser.id === review.userId
+              a(href="/editReview/"+review.id) Edit Review
+            p= review.reviewParagraph
+
+      else
+        p No Reviews Yet!

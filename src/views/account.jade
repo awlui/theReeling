@@ -8,10 +8,13 @@ block content
           li
             a(href="editProfile") Edit Profile Information
           li
-            a(href="reviews") All reviews
+            a(href="reviews/" + currentUser.id) All reviews
       section.desktop-c-8.mobile-c-12
         h3 Latest Review:
-        section
-          img(src=user.recentReview.poster)
-          h3= user.recentReview.title
-          p= user.recentReview.reviewParagraph
+        if user
+          section
+            img(src="https://image.tmdb.org/t/p/w500" + user.recentReview.poster)
+            h3= user.recentReview.title
+            p= user.recentReview.reviewParagraph
+        else
+          p No Reviews

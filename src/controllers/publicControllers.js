@@ -52,7 +52,7 @@ module.exports.login = function(req, res) {
 	}
 }
 
-module.exports.signUp = function(req, res) {
+module.exports.signUp = function(req, res, next) {
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/user",
 		method: "POST",
@@ -69,31 +69,20 @@ module.exports.signUp = function(req, res) {
 		} else if (response.statusCode === 201) {
 			res.redirect('/account');
 		} else {
-			console.log(response.statusCode);
+			if (body.name === "SequelizeUniqueConstraintError") {
+				res.statusCode = 400;
+				res.send("Username is taken");
+			}
+			else {
+				console.log(response.statusCode);
+				next(response.statusCode);
+			}
 		}
 	});
 }
 
 module.exports.search = function(req, res) {
-	res.render('search', {
-		movies: [{
-			title: "Spirited Away",
-			poster: "http://image.tmdb.org/t/p/w500/ynXoOxmDHNQ4UAy0oU6avW71HVW.jpg"
-		},
-		{
-			title: "Interstellar",
-			poster: "https://s-media-cache-ak0.pinimg.com/originals/a5/13/df/a513df413b50b1c5de6e2e98b54691d8.jpg"
-		},
-		{
-			title: "Howl's Moving Castle",
-			poster: "http://pre01.deviantart.net/47b3/th/pre/i/2016/062/0/7/spirit_of_the_demon___howl_s_moving_castle_poster_by_edwardjmoran-d9trrjf.jpg"
-		},
-				{
-			title: "Howl's Moving Castle",
-			poster: "http://pre01.deviantart.net/47b3/th/pre/i/2016/062/0/7/spirit_of_the_demon___howl_s_moving_castle_poster_by_edwardjmoran-d9trrjf.jpg"
-		}
-		]
-	});
+	res.render('search');
 }
 
 module.exports.searchAPI = function(req, res) {

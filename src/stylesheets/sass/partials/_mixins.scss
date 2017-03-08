@@ -5,3 +5,9 @@
 		@content;
 	}
 }
+
+@mixin mq-tablet {
+	@media (max-width: $tablet-screen) {
+		@content;
+	}
+}

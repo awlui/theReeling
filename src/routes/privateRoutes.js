@@ -10,14 +10,20 @@ router.get('/addReview/:movieId', privateControllers.addReviewForm);
 
 router.get('/editReview/:reviewId', privateControllers.editReviewForm);
 
-router.get('/editProfile', privateControllers.editProfile);
+router.get('/reviews/:userId', privateControllers.reviews);
 
-router.get('/reviews', privateControllers.reviews);
+router.get('/editProfile/:userId', privateControllers.editProfileForm); 
+
 
 //POST
 
 router.post('/addReview/:movieId', privateControllers.addReview);
 
 
+//PUT
+
+router.put('/editReview/:reviewId', privateControllers.editReview);
+
+router.put('/editProfile')
 
 module.exports = router;

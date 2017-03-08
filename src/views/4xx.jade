@@ -1,0 +1,6 @@
+extends layout
+block content
+  if statusCode
+    h2 Error: #{statusCode} :(
+  if message
+    p= message

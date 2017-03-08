@@ -5,8 +5,8 @@ block content
     div.row.editReview
       section.desktop-c-6.mobile-c-12
         h3= review.title
-        img(src=review.poster)
-      form.desktop-c-6.mobile-c-12(action="post")
+        img(src="https://image.tmdb.org/t/p/w500" + review.poster)
+      form.desktop-c-6.mobile-c-12(method="PUT", action="/editReview/" + review.id)
         label(for="review") Review:
         textarea(name="review", id="review")= review.reviewParagraph
         label(for="summary") Summary:

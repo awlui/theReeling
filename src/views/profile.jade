@@ -3,7 +3,10 @@ block content
   section.container.profile
     .row
       h2= user.name
-      img(src=user.image)
+      if user.image
+        img(src=user.image)
+      else
+        img(src="http://cdn.techgyd.com/no-user-profile-picture-whatsapp.jpg")
       h3 About Me:
       p= user.biography
       h3 Favorite Movies
@@ -22,6 +25,7 @@ block content
     .row
       for review in user.reviews
         section.desktop-c-6.mobile-c-12
-          img(src="https://image.tmdb.org/t/p/w500" + review.Movie.poster)
+          a(href="/movieInfo/" + review.Movie.id)
+            img(src="https://image.tmdb.org/t/p/w500" + review.Movie.poster)
           h3= review.Movie.title
           p= review.reviewParagraph

@@ -12,34 +12,35 @@ block content
             a(href="#"+arr[count], class="overlay")
               div= review.Movie.title
         - count++;
-  section.banner
-    h2  Sign Up!
-  .wrapper
-    article.container.jumbotron
-      .row
-        section.desktop-c-4.tablet-c-12
-          h2 Review Your Favorite Movies!
-          p.
-            Or your least favorite movies... However, the goal of this site is to talk about your favorite movies. Don't kill your vibe.
-        section.desktop-c-8.tablet-c-12
-          article.signUp
-            section.row
-              h3 Write your review today!
-            form(action="/signUp", method="POST", class="row")
-              section.desktop-c-6.tablet-c-12
-                label(for="#firstname") First name
-                input(id="firstname", type="text", name="firstname")
-                label(for="#lastname") Last name
-                input(id="lastname", type="text", name="lastname")
-              section.desktop-c-6.tablet-c-12
-                label(for="username") Username
-                input(id="username", type="text", name="username")
-                label(for="#password") Password
-                input(id="password", type="password", name="password")
-              span
-                |  Or 
-                a(href="#login") Log In
-              input(type="submit", value="submit")
+  if !currentUser
+    section.banner
+      h2  Sign Up!
+    .wrapper
+      article.container.jumbotron
+        .row
+          section.desktop-c-4.tablet-c-12
+            h2 Review Your Favorite Movies!
+            p.
+              Or your least favorite movies... However, the goal of this site is to talk about your favorite movies. Don't kill your vibe.
+          section.desktop-c-8.tablet-c-12
+            article.signUp
+              section.row
+                h3 Write your review today!
+              form(action="/signUp", method="POST", class="row")
+                section.desktop-c-6.tablet-c-12
+                  label(for="#firstname") First name
+                  input(id="firstname", type="text", name="firstname")
+                  label(for="#lastname") Last name
+                  input(id="lastname", type="text", name="lastname")
+                section.desktop-c-6.tablet-c-12
+                  label(for="username") Username
+                  input(id="username", type="text", name="username")
+                  label(for="#password") Password
+                  input(id="password", type="password", name="password")
+                span
+                  |  Or 
+                  a(href="#login") Log In
+                input(type="submit", value="submit").  
   section.banner
     h2 Reviews
   article.container

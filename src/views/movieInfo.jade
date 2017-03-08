@@ -16,11 +16,16 @@ block content
     h2 Reviews
   article.reviews
     section.container
-      a(href="/addReview/"+movie.id) Add Review
+      if currentUser
+        a(href="/addReview/"+movie.id) Add Review
       div.row
         each review in movie.reviews
           section.desktop-c-6.mobile-c-12
-            img(src=review.User.image)
+            a(href="/profile/" + review.userId)
+              if review.User.image
+                img(src=review.User.image)
+              else
+                img(src="http://cdn.techgyd.com/no-user-profile-picture-whatsapp.jpg")
             h3.hvr-underline-from-right= review.User.firstName + " " + review.User.lastName
             p= review.reviewParagraph
               

@@ -11,7 +11,11 @@ html
       h1
         a(class="hvr-float-shadow" href="/") The Reeling
       div
-        a(href="/login") Login
+        if currentUser
+          a(href="/account") Account
+          a(href="/logout") Logout
+        else
+          a(href="/login") Login
         a(href="/search") Search
     block content
     footer
