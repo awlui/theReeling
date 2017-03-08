@@ -132,7 +132,7 @@ module.exports.editReview = function(req, res) {
 		if (err) {
 			console.log(err);
 		} else if (response.statusCode === 200) {
-			res.redirect('/reviews/' + res.locals.currentUser.id);
+			res.redirect('/reviews');
 		} else if (response.statusCode === 400 || response.statusCode === 404) {
 			res.render("4xx", {
 				message: body.message,
