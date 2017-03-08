@@ -83,12 +83,11 @@ module.exports.editReviewForm = function(req, res) {
 		url: "https://blooming-sea-71496.herokuapp.com/api/review/" + req.params.reviewId,
 		method: "GET",
 		json: {}
-	}
+	};
 	request(requestOptions, function(err, response, review) {
 		if (err) {
 			console.log(err);
 		} else if (response.statusCode === 200) {
-			review = review[0];
 			if (res.locals.currentUser && (review.userId === res.locals.currentUser.id)) {
 				res.render('editReview', {
 					review: {
@@ -99,6 +98,11 @@ module.exports.editReviewForm = function(req, res) {
 						reviewParagraph: review.reviewParagraph,
 						summary: review.summary
 					}
+				});
+			} else {
+				res.render("4xx", {
+					message: "You are not authorized",
+					statusCode: 400
 				});
 			}
 		} else if (response.statusCode === 400 || response.statusCode === 404) {
@@ -114,6 +118,7 @@ module.exports.editReviewForm = function(req, res) {
 }
 
 module.exports.editReview = function(req, res) {
+	console.log(req.body.reviewParagraph);
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/review/" + req.params.reviewId,
 		method: "PUT",
@@ -124,13 +129,14 @@ module.exports.editReview = function(req, res) {
 		}
 	}
 	request(requestOptions, function(err, response, body) {
+		console.log(body)
 		if (err) {
 			console.log(err);
 		} else if (response.statusCode === 200) {
-			redirect('/reviews');
+			res.redirect('/reviews/' + res.locals.currentUser.id);
 		} else if (response.statusCode === 400 || response.statusCode === 404) {
 			res.render("4xx", {
-				message: review.message,
+				message: body.message,
 				statusCode: response.statusCode
 			});
 		}
@@ -158,7 +164,6 @@ module.exports.editProfile = function(req, res) {
 }
 
 module.exports.reviews = function(req, res) {
-	console.log("here");
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + req.params.userId + "/review",
 		json: {},

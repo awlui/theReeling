@@ -6,9 +6,9 @@ block content
       section.desktop-c-6.mobile-c-12
         h3= review.title
         img(src="https://image.tmdb.org/t/p/w500" + review.poster)
-      form.desktop-c-6.mobile-c-12(method="PUT", action="/editReview/" + review.id)
+      form.desktop-c-6.mobile-c-12(method="POST", action="/editReview/" + review.id)
         label(for="review") Review:
-        textarea(name="review", id="review")= review.reviewParagraph
+        textarea(name="reviewParagraph", id="review")= review.reviewParagraph
         label(for="summary") Summary:
-        textarea(name="reviewSummary", id="summary")= review.summary
+        textarea(name="summary", id="summary")= review.summary
         input(type="submit" value="Submit")

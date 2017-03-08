@@ -20,10 +20,8 @@ router.get('/editProfile/:userId', privateControllers.editProfileForm);
 router.post('/addReview/:movieId', privateControllers.addReview);
 
 
-//PUT
+router.post('/editReview/:reviewId', privateControllers.editReview);
 
-router.put('/editReview/:reviewId', privateControllers.editReview);
-
-router.put('/editProfile')
+router.post('/editProfile')
 
 module.exports = router;
