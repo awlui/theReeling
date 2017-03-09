@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var privateControllers = require('../controllers/privateControllers')
 //Private Pages
-
+var fileLoader = require('./multer');
 //GET
 router.get('/account', privateControllers.account);
 
@@ -22,6 +22,7 @@ router.post('/addReview/:movieId', privateControllers.addReview);
 
 router.post('/editReview/:reviewId', privateControllers.editReview);
 
-router.post('/editProfile', privateControllers.editProfile)
+
+router.post('/editProfile', fileLoader, privateControllers.editProfile);
 
 module.exports = router;
