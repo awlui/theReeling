@@ -6,7 +6,8 @@ var mime = require('mime');
 var crypto = require('crypto');
 var multer = require('multer');
 var fs = require('fs');
-
+var jo = require('jpeg-autorotate');
+var path = require('path');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
   	console.log("destination")
@@ -20,7 +21,7 @@ var storage = multer.diskStorage({
 	    	console.log(encryptedFile)
 	    	if (req.user.image) {
 	    		try {
-	    			fs.unlinkSync('../../public/uploads/' + req.user.image);
+	    			fs.unlinkSync(__dirname + '/../../public/uploads/' + req.user.image);
 	    		}
 	    		catch(err) {
 	    			console.log(err);
@@ -57,15 +58,24 @@ var fileLoader = function(req, res, next) {
 				return;
 			}
 		}
-		console.log(req.user, "HERE");
+		console.log(__dirname + "/../../public/uploads/" +req.user.image);
+		jo.rotate(__dirname +'/../../public/uploads/' + req.user.image, {quality: 85, jobs: 100}, function(error, buffer, orientation) {
+			console.log(orientation)
+			if (error && error.code === jo.errors.correct_orientation) {
+				console.log('The orientation of this image is already correct!');
+			}
+			fs.writeFile(__dirname +'/../../public/uploads/' + req.user.image, buffer, function(err) {
+				if (err) {
+					console.log("ERROR")
+				} else {
+					console.log("SUCCESS")
+				}
+			})
+		} )
 		next();
 		return;
 	})
 };
-
-
-
-
 
 
 

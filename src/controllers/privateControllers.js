@@ -170,7 +170,6 @@ module.exports.editProfileForm = function(req, res, next) {
 
 
 module.exports.editProfile = function(req, res) {
-	console.log(req.body);
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id,
 		json: {
