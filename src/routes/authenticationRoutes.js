@@ -8,7 +8,7 @@ router.get('/login', authenticationControllers.loginForm);
 
 router.post('/login', passport.authenticate("login", {
 	successRedirect: '/account',
-	failureRedirect: '/'
+	failureRedirect: '/login'
 }));
 
 router.post('/signUp', authenticationControllers.signUp, 

@@ -3,15 +3,16 @@ var LocalStrategy = require('passport-local').Strategy;
 var request = require('request');
 
 passport.use("login", new LocalStrategy(function(username, password, done) {
+	console.log(username)
 	var requestOptions = {
-		url: "https://blooming-sea-71496.herokuapp.com/api/login/user/" + username,
+		url: "https://blooming-sea-71496.herokuapp.com/api/login/user",
 		method: "GET",
 		json: {},
 		qs: {
-			password: password
-		}
+			password: password,
+			username: username
+		},
 	};
-	console.log(username, password)
 	request(requestOptions, function(err, response, user) {
 		console.log(user);
 		if (err) {

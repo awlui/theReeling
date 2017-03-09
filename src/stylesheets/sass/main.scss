@@ -387,6 +387,13 @@ footer {
 	}
 	h3 {
 		display: block;
+		a {
+			text-decoration:none;
+			color: none;
+			&:visited {
+				color: black;
+			}
+		}
 	}
 }
 // Profile

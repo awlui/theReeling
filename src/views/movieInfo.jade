@@ -26,7 +26,8 @@ block content
                 img(src=review.User.image)
               else
                 img(src="http://cdn.techgyd.com/no-user-profile-picture-whatsapp.jpg")
-            h3.hvr-underline-from-right= review.User.firstName + " " + review.User.lastName
+            h3
+              a(href="/profile/" + review.User.id).hvr-underline-from-right= review.User.firstName + " " + review.User.lastName
             p= review.reviewParagraph
               
 

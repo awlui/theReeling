@@ -1,6 +1,6 @@
 var request = require('request');
 
-module.exports.account = function(req, res) {
+module.exports.account = function(req, res, next) {
 	console.log(res.locals.currentUser);
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id + "/review",
@@ -12,8 +12,9 @@ module.exports.account = function(req, res) {
 		}
 	};
 	request(requestOptions, function(err, response, body) {
+		console.log(body);
 		if (err) {
-			console.log(err);
+			console.log(err, "Account Error");
 		} else if (response.statusCode === 200) {
 			if (body[0]) {
 				res.render('account', {
@@ -34,7 +35,7 @@ module.exports.account = function(req, res) {
 	});
 }
 
-module.exports.addReviewForm = function(req, res) {
+module.exports.addReviewForm = function(req, res, next) {
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/movie/" + req.params.movieId,
 		method: "GET",
@@ -54,9 +55,9 @@ module.exports.addReviewForm = function(req, res) {
 	});
 }
 
-module.exports.addReview = function(req, res) {
+module.exports.addReview = function(req, res, next) {
 	var requestOptions = {
-		url: "https://blooming-sea-71496.herokuapp.com/api/movie/" + req.params.movieId + "/review/" + res.locals.currentUser.id,
+		url: "https://blooming-sea-71496.herokuapp.com/api/movie/" + req.params.movieId + "/review",
 		method: "POST",
 		json: {
 			userId: res.locals.currentUser.id,
@@ -78,7 +79,7 @@ module.exports.addReview = function(req, res) {
 	})
 }
 
-module.exports.editReviewForm = function(req, res) {
+module.exports.editReviewForm = function(req, res, next) {
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/review/" + req.params.reviewId,
 		method: "GET",
@@ -117,7 +118,7 @@ module.exports.editReviewForm = function(req, res) {
 	});
 }
 
-module.exports.editReview = function(req, res) {
+module.exports.editReview = function(req, res, next) {
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/review/" + req.params.reviewId,
 		method: "PUT",
@@ -128,7 +129,6 @@ module.exports.editReview = function(req, res) {
 		}
 	}
 	request(requestOptions, function(err, response, body) {
-		console.log(body)
 		if (err) {
 			console.log(err);
 		} else if (response.statusCode === 200) {
@@ -138,6 +138,8 @@ module.exports.editReview = function(req, res) {
 				message: body.message,
 				statusCode: response.statusCode
 			});
+		} else {
+			next(new Error("Internal Service Error"));
 		}
 	});
 }
@@ -162,7 +164,7 @@ module.exports.editProfile = function(req, res) {
 	});
 }
 
-module.exports.reviews = function(req, res) {
+module.exports.reviews = function(req, res, next) {
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id + "/review",
 		json: {},
@@ -180,6 +182,8 @@ module.exports.reviews = function(req, res) {
 				message: body.message || "",
 				statusCode: response.statusCode
 			});
+		} else {
+			next(new Error("Internal Service Error"));
 		}
 	});
 

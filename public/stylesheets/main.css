@@ -928,6 +928,11 @@ footer {
       opacity: 1; }
   .reviews h3 {
     display: block; }
+    .reviews h3 a {
+      text-decoration: none;
+      color: none; }
+      .reviews h3 a:visited {
+        color: black; }
 
 .profile {
   text-align: center;
