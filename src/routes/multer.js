@@ -11,15 +11,17 @@ var storage = multer.diskStorage({
   	if (mime.extension(file.mimetype) === 'jpeg' || mime.extension(file.mimetype) ==='png') {
 	    crypto.pseudoRandomBytes(16, function (err, raw) {
 	    	var encryptedFile = raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype);
+	    	console.log(encryptedFile)
 	    	if (req.user.image) {
 	    		try {
-	    			fs.unlinkSync('./public/uploads/' + req.user.image);
+	    			fs.unlinkSync('../../public/uploads/' + req.user.image);
 	    		}
 	    		catch(err) {
 	    			console.log(err);
 	    		}
 	    	}
 	    	req.user.image = encryptedFile;
+	    	console.log(encryptedFile);
 	      cb(null, encryptedFile);
 	    });
 	} else {
@@ -35,6 +37,7 @@ var upload = multer({ storage: storage,
 
 module.exports = fileLoader = function(req, res, next) {
 	upload(req,res, function(err) {
+		console.log(req.user)
 		// Multer Error Handling
 		if (err) {
 			if (err.message === 'File too large') {
@@ -48,6 +51,7 @@ module.exports = fileLoader = function(req, res, next) {
 				return;
 			}
 		}
+		console.log(req.user);
 		next();
 		return;
 	})

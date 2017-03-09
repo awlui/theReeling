@@ -11,7 +11,6 @@ module.exports.account = function(req, res, next) {
 		}
 	};
 	request(requestOptions, function(err, response, body) {
-		console.log(body);
 		if (err) {
 			console.log(err, "Account Error");
 		} else if (response.statusCode === 200) {
@@ -21,6 +20,7 @@ module.exports.account = function(req, res, next) {
 						recentReview: {
 							poster: body[0].Movie.poster,
 							title: body[0].Movie.title,
+
 							reviewParagraph: body[0].reviewParagraph
 						}
 					}
@@ -143,24 +143,23 @@ module.exports.editReview = function(req, res, next) {
 	});
 }
 
-module.exports.editProfileForm = function(req, res) {
-	console.log("STAGE1")
+module.exports.editProfileForm = function(req, res, next) {
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id,
-		method: "GET",
-		json: {}
-	}
-	request(requestOptions, function(err, response, user) {
-		console.log("STAGE2", user)
+		json: {},
+		method: "GET"
+	};
+	request(requestOptions, function(err, response, body) {
 		if (err) {
 			next(err);
 		} else if (response.statusCode === 200) {
 			res.render("editProfile", {
-				user: user
+
+				user: body
 			});
-		} else if (response.statusCode === 400) {
+		} else if (response.statusCode === 404) {
 			res.render("4xx", {
-				message: user.message,
+				message: body.message || "",
 				statusCode: response.statusCode
 			});
 		} else {
@@ -169,29 +168,29 @@ module.exports.editProfileForm = function(req, res) {
 	});
 }
 
-module.exports.editProfile = function(req, res, next) {
-	console.log(req.body.movieOne, req.body.movieTwo, req.body.biography, req.body.movieThree)
+
+module.exports.editProfile = function(req, res) {
+	console.log(req.body);
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id,
-		method: "PUT",
 		json: {
-			image: req.body.image,
 			movieOne: req.body.movieOne,
 			movieTwo: req.body.movieTwo,
 			movieThree: req.body.movieThree,
-			biography: req.body.biography
-		}
+			biography: req.body.biography,
+			image: req.user.image
+		},
+		method: "PUT"
 	};
-	request(requestOptions, function(err, response, user) {
-		console.log("STAGE1")
+	request(requestOptions, function(err, response, body) {
 		if (err) {
 			next(err);
 		} else if (response.statusCode === 200) {
-			console.log("STAGE2")
-			res.redirect("/account");
-		} else if (response.statusCode === 400 || response.statusCode === 404) {
-			res.render("4xx", {
-				message: user.messsage,
+			res.redirect('/account');
+			return;
+		} else if (response.statusCode === 404 || response.statusCode === 400) {
+			res.render('4xx', {
+				message: body.message || "",
 				statusCode: response.statusCode
 			});
 		} else {

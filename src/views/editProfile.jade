@@ -6,7 +6,7 @@ block content
       form.desktop-c-6.mobile-c-12(action="/editProfile", method="post", enctype="multipart/form-data")
         label(for="#profileImage") Profile Image:
         if user.image
-          img(src="public/images/"+user.image)
+          img(src="public/uploads/"+user.image)
         else
           img(src="http://cdn.techgyd.com/no-user-profile-picture-whatsapp.jpg")
         input(id="profileImage", type="file", name="image")

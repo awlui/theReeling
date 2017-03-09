@@ -23,7 +23,7 @@ block content
           section.desktop-c-6.mobile-c-12
             a(href="/profile/" + review.userId)
               if review.User.image
-                img(src=review.User.image)
+                img(src="/public/uploads/" + review.User.image)
               else
                 img(src="http://cdn.techgyd.com/no-user-profile-picture-whatsapp.jpg")
             h3

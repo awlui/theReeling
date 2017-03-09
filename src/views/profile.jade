@@ -4,7 +4,7 @@ block content
     .row
       h2= user.name
       if user.image
-        img(src=user.image)
+        img(src="/public/uploads/" + user.image)
       else
         img(src="http://cdn.techgyd.com/no-user-profile-picture-whatsapp.jpg")
       h3 About Me:
