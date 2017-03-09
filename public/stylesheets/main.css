@@ -856,6 +856,8 @@ footer {
 .editProfile {
   min-height: 550px;
   margin-top: 70px; }
+  .editProfile a[href="/account"] {
+    display: block; }
   .editProfile form {
     color: white;
     background-color: rgba(0, 0, 0, 0.7);
@@ -912,13 +914,24 @@ footer {
       display: block; }
 
 .reviews {
+  margin-top: 70px;
   text-align: center; }
+  .reviews a[href="/account"] {
+    display: block;
+    text-align: left; }
   .reviews section.container {
-    margin-top: 10px; }
+    margin-top: 10px;
+    text-align: center; }
     .reviews section.container .row section {
       overflow: hidden; }
   .reviews a {
     display: inline-block; }
+    .reviews a[href="/account"] {
+      display: block;
+      text-align: left; }
+    .reviews a[href^="/addReview"] {
+      display: block;
+      text-align: left; }
   .reviews img {
     height: 300px;
     display: block;
