@@ -1,7 +1,6 @@
 var request = require('request');
 
 module.exports.account = function(req, res, next) {
-	console.log(res.locals.currentUser);
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id + "/review",
 		method: "GET",
@@ -12,7 +11,6 @@ module.exports.account = function(req, res, next) {
 		}
 	};
 	request(requestOptions, function(err, response, body) {
-		console.log(body);
 		if (err) {
 			console.log(err, "Account Error");
 		} else if (response.statusCode === 200) {
@@ -144,22 +142,56 @@ module.exports.editReview = function(req, res, next) {
 	});
 }
 
-module.exports.editProfileForm = function(req, res) {
-	res.render("editProfile", {
-		user: {
-			biography: "the names andy",
-			image: "profile.png",
-			favorites: ["Spirited Away"]
+module.exports.editProfileForm = function(req, res, next) {
+	var requestOptions = {
+		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id,
+		json: {},
+		method: "GET"
+	};
+	request(requestOptions, function(err, response, body) {
+		if (err) {
+			next(err);
+		} else if (response.statusCode === 200) {
+			res.render("editProfile", {
+				user: body
+			});
+		} else if (response.statusCode === 404) {
+			res.render("4xx", {
+				message: body.message || "",
+				statusCode: response.statusCode
+			});
+		} else {
+			next(new Error("Internal Service Error"));
 		}
 	});
 }
 
 module.exports.editProfile = function(req, res) {
-	res.render("editProfile", {
-		user: {
-			biography: "the names andy",
-			image: "profile.png",
-			favorites: ["Spirited Away"]
+	console.log(req.body);
+	var requestOptions = {
+		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id,
+		json: {
+			movieOne: req.body.movieOne,
+			movieTwo: req.body.movieTwo,
+			movieThree: req.body.movieThree,
+			biography: req.body.biography,
+			image: req.user.image
+		},
+		method: "PUT"
+	};
+	request(requestOptions, function(err, response, body) {
+		if (err) {
+			next(err);
+		} else if (response.statusCode === 200) {
+			res.redirect('/account');
+			return;
+		} else if (response.statusCode === 404 || response.statusCode === 400) {
+			res.render('4xx', {
+				message: body.message || "",
+				statusCode: response.statusCode
+			});
+		} else {
+			next(new Error("Internal Service Error"));
 		}
 	});
 }

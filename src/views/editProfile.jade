@@ -3,10 +3,10 @@ block content
   article.container
     h2.hvr-underline-from-right Edit Profile
     div.row.editProfile
-      form.desktop-c-6.mobile-c-12(action="post" enctype="multipart/form-data")
+      form.desktop-c-6.mobile-c-12(action="/editProfile", method="post", enctype="multipart/form-data")
         label(for="#profileImage") Profile Image:
-        img(src="public/images/"+user.image)
-        input(id="profileImage", type="file", name="profileImage")
+        img(src="public/uploads/"+user.image)
+        input(id="profileImage", type="file", name="image")
         label(for="#biography") Biography:
         textarea(name="biography", id="biography")= user.biography
         label Favorite Movies:
