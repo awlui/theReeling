@@ -9,7 +9,7 @@ var session = require('express-session');
 var publicRoutes = require('./src/routes/publicRoutes.js');
 var privateRoutes = require('./src/routes/privateRoutes.js');
 var authenticationRoutes = require('./src/routes/authenticationRoutes');
-
+var flash = require('connect-flash');
 // Move to helper function file later*****
 var allowCrossDomain = function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -49,6 +49,7 @@ app.use(session({
 
 // passport setup
 setupPassport();
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -56,9 +57,9 @@ app.use(passport.session());
 // Current User
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
-  // res.locals.errors = req.flash('error');
-  // res.locals.infos = req.flash('info');
-  // res.locals.successes = req.flash('success');
+  res.locals.errors = req.flash('error');
+  res.locals.infos = req.flash('info');
+  res.locals.successes = req.flash('success');
   next();
 
 });

@@ -1,8 +1,10 @@
 extends layout
 block content
-  article.container
+  article.container.editProfile
+    a(href="/account")
+      &#8592; Accounts
     h2.hvr-underline-from-right Edit Profile
-    div.row.editProfile
+    div.row
       form.desktop-c-6.mobile-c-12(action="/editProfile", method="post", enctype="multipart/form-data")
         label(for="#profileImage") Profile Image:
         if user.image
