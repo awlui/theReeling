@@ -1,7 +1,6 @@
 var request = require('request');
 
 module.exports.account = function(req, res, next) {
-	console.log(res.locals.currentUser);
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id + "/review",
 		method: "GET",
@@ -145,23 +144,61 @@ module.exports.editReview = function(req, res, next) {
 }
 
 module.exports.editProfileForm = function(req, res) {
-	res.render("editProfile", {
-		user: {
-			biography: "the names andy",
-			image: "profile.png",
-			favorites: ["Spirited Away"]
+	console.log("STAGE1")
+	var requestOptions = {
+		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id,
+		method: "GET",
+		json: {}
+	}
+	request(requestOptions, function(err, response, user) {
+		console.log("STAGE2", user)
+		if (err) {
+			next(err);
+		} else if (response.statusCode === 200) {
+			res.render("editProfile", {
+				user: user
+			});
+		} else if (response.statusCode === 400) {
+			res.render("4xx", {
+				message: user.message,
+				statusCode: response.statusCode
+			});
+		} else {
+			next(new Error("Internal Service Error"));
 		}
 	});
 }
 
-module.exports.editProfile = function(req, res) {
-	res.render("editProfile", {
-		user: {
-			biography: "the names andy",
-			image: "profile.png",
-			favorites: ["Spirited Away"]
+module.exports.editProfile = function(req, res, next) {
+	console.log(req.body.movieOne, req.body.movieTwo, req.body.biography, req.body.movieThree)
+	var requestOptions = {
+		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id,
+		method: "PUT",
+		json: {
+			image: req.body.image,
+			movieOne: req.body.movieOne,
+			movieTwo: req.body.movieTwo,
+			movieThree: req.body.movieThree,
+			biography: req.body.biography
+		}
+	};
+	request(requestOptions, function(err, response, user) {
+		console.log("STAGE1")
+		if (err) {
+			next(err);
+		} else if (response.statusCode === 200) {
+			console.log("STAGE2")
+			res.redirect("/account");
+		} else if (response.statusCode === 400 || response.statusCode === 404) {
+			res.render("4xx", {
+				message: user.messsage,
+				statusCode: response.statusCode
+			});
+		} else {
+			next(new Error("Internal Service Error"));
 		}
 	});
+
 }
 
 module.exports.reviews = function(req, res, next) {

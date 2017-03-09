@@ -34,7 +34,6 @@ module.exports.signUp = function(req, res, next) {
 		if (err) {
 			console.log(err);
 		} else if (response.statusCode === 201) {
-			console.log(body, 'hello');
 			next();
 		} else {
 			if (body.name === "SequelizeUniqueConstraintError") {

@@ -12,7 +12,7 @@ router.get('/editReview/:reviewId', privateControllers.editReviewForm);
 
 router.get('/reviews', privateControllers.reviews);
 
-router.get('/editProfile/:userId', privateControllers.editProfileForm); 
+router.get('/editProfile', privateControllers.editProfileForm); 
 
 
 //POST
@@ -22,6 +22,6 @@ router.post('/addReview/:movieId', privateControllers.addReview);
 
 router.post('/editReview/:reviewId', privateControllers.editReview);
 
-router.post('/editProfile')
+router.post('/editProfile', privateControllers.editProfile)
 
 module.exports = router;
