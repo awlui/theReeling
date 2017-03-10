@@ -2,9 +2,13 @@
 @import './partials/base/_normalize.scss';
 @import './partials/base/_customCSSGrid.scss';
 @import './partials/_mixins.scss';
-
+html {
+	height: 100%;
+}
 body {
 	background-image: $body-theme;
+	position: relative;
+	min-height: 100%;
 	background-repeat: repeat;
 	font-family: 'Lora', serif;
 }
@@ -201,9 +205,12 @@ article.home {
 footer {
 	background-color: $footer-color;
 	color: white;
+	position: relative;
+	bottom: 0;
 	text-align: center;
 	margin: 5px 0;
 	padding-bottom: 60px;
+
 	h2 {
 		border-bottom: solid 1px white;
 		padding: 10px;
@@ -391,11 +398,11 @@ footer {
 	}
 	margin-top: 70px;
 	text-align: center;
-	section.container {
+	section {
 		margin-top: 10px;
 		text-align: center;
-		.row section {
-			overflow: hidden;
+		div {
+			position: relative;
 		}
 	}
 	a {
@@ -405,8 +412,25 @@ footer {
 			text-align: left;
 		}
 		&[href^="/addReview"] {
-			display: block;
-			text-align: left;
+			display: inline-block;
+			text-align: center;
+			font-size: 1.5em;
+			padding: 10px;
+			text-decoration:none;
+			border-radius: 5px;
+			color: rgba(255,255,255,0.7);
+			background-color: $dark-black;
+			&:hover {
+				color: white;
+			}
+		}
+		&[href="/deleteReview"] {
+			position: absolute;
+			top: 0;
+			right: 0;
+			font-size: 2em;
+			text-decoration: none;
+			color: red;
 		}
 	}
 	img {
@@ -500,7 +524,11 @@ footer {
 
 .editReview {
 	min-height: 550px;
-	margin-top: 70px;
+	margin-top: 60px;
+	a[href="/account"] {
+		display: block;
+		text-align: left;
+	}
 	section {
 		text-align: center;
 		h3 {
@@ -515,6 +543,7 @@ footer {
 		background-color: $light-black;
 		border-radius: 5px;
 		padding: 10px;
+		margin-top: 20px;
 		text-align: center;
 		label {
 			margin-bottom: 10px;
@@ -554,8 +583,29 @@ footer {
 		img {
 			max-width: 70%;
 		}
+		a {
+			float: left;
+			margin: 10px;
+			border-radius: 5px;
+			text-decoration: none;
+			background-color: rgba(255,0,0,0.5);
+			color: $light-black;
+			line-height: 2em;
+			padding: 10px;
+			&:hover {
+				background-color: rgba(255,0,0,0.7);
+			}
+		}
 	}
 
+}
+/******** Error Page ************/
+.container.error {
+	& + footer {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+	}
 }
 
 /******** HOVER CSS ******/

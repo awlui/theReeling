@@ -42,14 +42,18 @@ module.exports.addReviewForm = function(req, res, next) {
 	}
 	request(requestOptions, function(err, response, body) {
 		if (err) {
-			console.log(err);
-
+			next(err);
 		} else if (response.statusCode === 200) {
 			res.render('addReview', {
 				movie: body
 			});
+		} else if (response.statusCode === 400 || response.statusCode === 404) {
+			res.render('4xx', {
+				message: body.message,
+				statusCode: response.statusCode
+			})
 		} else {
-			console.log(response.statusCode);
+			next(new Error("Internal Service Error"));
 		}
 	});
 }
@@ -67,15 +71,18 @@ module.exports.addReview = function(req, res, next) {
 	}
 	request(requestOptions, function(err, response, body) {
 		if (err) {
-			console.log(err);
-			console.log('fail');
+			next(err);
 		} else if (response.statusCode === 201) {
-			console.log('success')
 			res.redirect("/movieInfo/" + req.params.movieId);
+		} else if (response.statusCode === 400 || response.statusCode === 404) {
+			res.render('4xx', {
+				message: body.message,
+				statusCode: response.statusCode
+			})
 		} else {
-			console.log(response.statusCode, "fail");
+			next(new Error("Internal Service Error"));
 		}
-	})
+	});
 }
 
 module.exports.editReviewForm = function(req, res, next) {
@@ -222,4 +229,32 @@ module.exports.reviews = function(req, res, next) {
 		}
 	});
 
+}
+
+// module.exports.deleteUser = function(req,res,next) {
+// 	res.send(404)
+// }
+
+module.exports.deleteReview = function(req,res,next) {
+	var requestOptions = {
+		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id + "/review/" + req.params.reviewId,
+		method: "DELETE",
+		json: {}
+	}
+	console.log("stage1")
+	request(requestOptions, function(err, response, body) {
+		console.log(response.statusCode);
+		if (err) {
+			console.log(err);
+		} else if (response.statusCode === 204) {
+			res.redirect('/account');
+		} else if (response.statusCode === 400 || response.statusCode === 404) {
+			res.render('4xx', {
+				message: body.message || "",
+				statusCode: response.statusCode
+			})
+		} else {
+			next(new Error("Internal Service Error"));
+		}
+	});
 }

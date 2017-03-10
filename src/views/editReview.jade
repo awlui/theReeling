@@ -1,8 +1,9 @@
 extends layout
 block content
-  article.container
+  article.container.editReview
+    a(href="/account") &#8592; Accounts
     h2.hvr-underline-from-right Edit Review
-    div.row.editReview
+    div.row
       section.desktop-c-6.mobile-c-12
         h3= review.title
         img(src="https://image.tmdb.org/t/p/w500" + review.poster)
@@ -12,3 +13,4 @@ block content
         label(for="summary") Summary:
         textarea(name="summary", id="summary")= review.summary
         input(type="submit" value="Submit")
+        a(href="/deleteReview/" + review.id) Delete

@@ -626,8 +626,13 @@ html {
     margin-left: 10px;
     width: calc(12 * (100% - 20px * (12 / 12)) / 12); } }
 /*# sourceMappingURL=main.css.map */
+html {
+  height: 100%; }
+
 body {
   background-image: url("../images/128-168.jpg");
+  position: relative;
+  min-height: 100%;
   background-repeat: repeat;
   font-family: 'Lora', serif; }
 
@@ -783,6 +788,8 @@ article.home {
 footer {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
+  position: relative;
+  bottom: 0;
   text-align: center;
   margin: 5px 0;
   padding-bottom: 60px; }
@@ -932,19 +939,34 @@ footer {
   .reviews a[href="/account"] {
     display: block;
     text-align: left; }
-  .reviews section.container {
+  .reviews section {
     margin-top: 10px;
     text-align: center; }
-    .reviews section.container .row section {
-      overflow: hidden; }
+    .reviews section div {
+      position: relative; }
   .reviews a {
     display: inline-block; }
     .reviews a[href="/account"] {
       display: block;
       text-align: left; }
     .reviews a[href^="/addReview"] {
-      display: block;
-      text-align: left; }
+      display: inline-block;
+      text-align: center;
+      font-size: 1.5em;
+      padding: 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      color: rgba(255, 255, 255, 0.7);
+      background-color: rgba(0, 0, 0, 0.8); }
+      .reviews a[href^="/addReview"]:hover {
+        color: white; }
+    .reviews a[href="/deleteReview"] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 2em;
+      text-decoration: none;
+      color: red; }
   .reviews img {
     height: 300px;
     display: block;
@@ -1013,7 +1035,10 @@ footer {
 
 .editReview {
   min-height: 550px;
-  margin-top: 70px; }
+  margin-top: 60px; }
+  .editReview a[href="/account"] {
+    display: block;
+    text-align: left; }
   .editReview section {
     text-align: center; }
     .editReview section h3 {
@@ -1025,6 +1050,7 @@ footer {
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 5px;
     padding: 10px;
+    margin-top: 20px;
     text-align: center; }
     .editReview form label {
       margin-bottom: 10px;
@@ -1054,6 +1080,23 @@ footer {
         display: inline; }
     .editReview form img {
       max-width: 70%; }
+    .editReview form a {
+      float: left;
+      margin: 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      background-color: rgba(255, 0, 0, 0.5);
+      color: rgba(0, 0, 0, 0.7);
+      line-height: 2em;
+      padding: 10px; }
+      .editReview form a:hover {
+        background-color: rgba(255, 0, 0, 0.7); }
+
+/******** Error Page ************/
+.container.error + footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%; }
 
 /******** HOVER CSS ******/
 /* Underline From Center */

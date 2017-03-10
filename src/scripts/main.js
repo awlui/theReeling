@@ -1,3 +1,5 @@
+// Slick Options
+
 $(function() {
 	$('.carousel').slick({
 		// lazyLoad: 'ondemand',
@@ -12,6 +14,8 @@ $(function() {
 	}); 
 });
 
+
+// Image swap at 700 width breakpoint on the carousel and other banners
 $(function() {
 	$(window).on('resize', function(evt) {
 		$('img', '.carousel, .backdrop').each(function() {
@@ -30,11 +34,12 @@ $(function() {
 	$(window).resize();
 });
 
+
+// Smooth Scroll Down Effect
 $(function() {
   $('a[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);
-      // target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
       if (target.length) {
         $('html, body').animate({
           scrollTop: target.offset().top
@@ -44,3 +49,4 @@ $(function() {
     }
   });
 });
+

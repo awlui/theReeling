@@ -84,6 +84,9 @@ router.get('/reviews', privateControllers.reviews);
 
 router.get('/editProfile', privateControllers.editProfileForm); 
 
+router.get('/deleteReview/:reviewId', privateControllers.deleteReview);
+
+// router.get('/deleteUser', privateControllers.deleteUser);
 
 //POST
 

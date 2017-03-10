@@ -37,7 +37,7 @@ var userSearch = function() {
 				$section = $('<section class="mobile-c-12 userSearch"></section>');
 				$imageWrapper = $('<section class="mobile-c-12 tablet-c-12 desktop-c-6  hvr-grow"></section>');
 				$biographyWrapper = $('<section class="mobile-c-12 desktop-c-6"></section>');
-				$username = $('<h2></h2>').append(val.username);
+				$username = $('<h2>Username: </h2>').append(val.username);
 				$biography = $('<p></p>').append(val.biography || "No Biography");
 				$biographyWrapper.append($username).append($biography);
 				$link = $('<a href="/profile/' + val.id + '"></a>');
