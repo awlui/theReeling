@@ -55,6 +55,7 @@ div.wrapper {
 	width: 100%;
 }
 
+
 article.jumbotron {
 	background-size: 6em;
 	text-align: center;
@@ -247,8 +248,23 @@ footer {
 				margin: 2em auto;
 				display:block;
 			}
+			@include mq-tablet {
+				float: none;
+				margin: 2em auto;
+				display: block;
+			}
 			img {
 				height: 100%;
+			}
+			&.userSearch {
+				height: 100%;
+				margin-bottom: 20px;
+				section + section {
+					height: auto;
+					background-color: white;
+					min-height: 300px;
+					border-radius: 10px;
+				}
 			}
 		}
 	}

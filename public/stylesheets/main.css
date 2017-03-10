@@ -824,8 +824,21 @@ footer {
           float: none;
           margin: 2em auto;
           display: block; } }
+      @media (max-width: 1199px) {
+        .search + .searchResult .row section {
+          float: none;
+          margin: 2em auto;
+          display: block; } }
       .search + .searchResult .row section img {
         height: 100%; }
+      .search + .searchResult .row section.userSearch {
+        height: 100%;
+        margin-bottom: 20px; }
+        .search + .searchResult .row section.userSearch section + section {
+          height: auto;
+          background-color: white;
+          min-height: 300px;
+          border-radius: 10px; }
 
 /******* Login Page ********/
 .login {
