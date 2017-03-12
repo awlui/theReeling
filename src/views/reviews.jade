@@ -1,19 +1,21 @@
 extends layout
 block content
   section.container.reviews
+    each success in successes
+      .flash-success= success
     a(href="/account")
       &#8592; Accounts
     h2 Reviews
     div.row
-      if reviews
+      - if (reviews.length > 0)
         each review in reviews
           section.desktop-c-6.mobile-c-12
             a(href="/movieInfo/"+review.Movie.id)
               img(src="https://image.tmdb.org/t/p/w500" + review.Movie.poster)
             h3= review.title
-            if currentUser.id === review.userId
+            - if (currentUser.id === review.userId)
               a(href="/editReview/"+review.id) Edit Review
             p= review.reviewParagraph
 
-      else
-        p No Reviews Yet!
+      - else
+          p No Reviews Yet!

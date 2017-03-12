@@ -1,5 +1,7 @@
 extends layout
 block content
+  each success in successes
+    .flash-success= success
   section.account.container
     h2 Account Info:
     div.row

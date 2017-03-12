@@ -2,8 +2,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var request = require('request');
 
-passport.use("login", new LocalStrategy(function(username, password, done) {
-	console.log(username)
+passport.use("login", new LocalStrategy({passReqToCallback: true}, function(req, username, password, done) {
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/login/user",
 		method: "GET",
@@ -14,19 +13,13 @@ passport.use("login", new LocalStrategy(function(username, password, done) {
 		},
 	};
 	request(requestOptions, function(err, response, user) {
-		console.log(user);
 		if (err) {
-			console.log(err);
+			next(err);
 		}
-		if (!user) {
-			console.log("NO user");
+		if (response.statusCode === 404 || response.statusCode === 400) {
+			return done(null, false, {message: "Invalid User and/or password"});
 		}
-		if (response.statusCode === 404) {
-			return done(null, false, {message: "invalid password"});
-		} else if (response.statusCode === 400) {
-			return done(null, false, {message: "User not found"});
-		}
-		return done(null, user);
+		return done(null, user, {message: "Login Successful, Welcome to the Reeling " + username});
 	});
 }));
 

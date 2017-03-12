@@ -248,17 +248,20 @@ footer {
 			text-align: center;
 		}
 		.row section {
+			padding: 10px;
 			height: 450px;
 			text-align: center;
 			@include mq-mobile {
 				float: none;
 				margin: 2em auto;
 				display:block;
+				width:90%;
 			}
 			@include mq-tablet {
 				float: none;
 				margin: 2em auto;
 				display: block;
+				width: 90%;
 			}
 			img {
 				height: 100%;
@@ -391,12 +394,12 @@ footer {
 	}
 }
 
-.reviews {
+section.reviews, article.reviews {
+	min-height: 600px;
 	a[href="/account"] {
 		display: block;
 		text-align: left;
 	}
-	margin-top: 70px;
 	text-align: center;
 	section {
 		margin-top: 10px;
@@ -416,6 +419,7 @@ footer {
 			text-align: center;
 			font-size: 1.5em;
 			padding: 10px;
+			margin: 20px 0;
 			text-decoration:none;
 			border-radius: 5px;
 			color: rgba(255,255,255,0.7);
@@ -453,6 +457,7 @@ footer {
 		}
 	}
 }
+
 // Profile
 .profile {
 	text-align: center;
@@ -605,6 +610,51 @@ footer {
 		position: fixed;
 		bottom: 0;
 		width: 100%;
+	}
+}
+
+/******** FLASH ******/
+
+%flash {
+	position: absolute;
+	left: 0;
+	width: 50%;
+	height: 30px;
+	color: white;
+	right: 0;
+	margin: 0 auto;
+	margin-top: 10px;
+	text-align: center;	
+	animation-name: flash;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+	animation-delay: 2s;
+	animation-timing-function: linear;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.flash-error {
+	@extend %flash;
+	background-color: rgba(255,163,129,1);
+	color: red;
+	border: solid 1px red;
+}
+
+.flash-success {
+	@extend %flash;
+	background-color: rgba(177,255,174,1);
+	color: green;
+	border: solid 1px green;
+	z-index: 1000;
+}
+
+@keyframes flash {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		height: 0;
 	}
 }
 

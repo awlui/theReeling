@@ -12,23 +12,28 @@ block content
           span= movie.releaseDate
           span Movie DB rating: #{movie.rating}
           p= movie.summary
-  section.banner
+  section.banner(id="reviews")
     h2 Reviews
   article.reviews
+    each success in successes
+      .flash-success= success
     section.container
       if currentUser
         a(href="/addReview/"+movie.id) Add Review
       div.row
-        each review in movie.reviews
-          section.desktop-c-6.mobile-c-12
-            a(href="/profile/" + review.userId)
-              if review.User.image
-                img(src="/public/uploads/" + review.User.image)
-              else
-                img(src="http://cdn.techgyd.com/no-user-profile-picture-whatsapp.jpg")
-            h3
-              a(href="/profile/" + review.User.id).hvr-underline-from-right= review.User.firstName + " " + review.User.lastName
-            p= review.reviewParagraph
+        if (movie.reviews.length > 0)
+          each review in movie.reviews
+            section.desktop-c-6.mobile-c-12
+              a(href="/profile/" + review.userId)
+                if review.User.image
+                  img(src="/public/uploads/" + review.User.image)
+                else
+                  img(src="http://cdn.techgyd.com/no-user-profile-picture-whatsapp.jpg")
+              h3
+                a(href="/profile/" + review.User.id).hvr-underline-from-right= review.User.firstName + " " + review.User.lastName
+              p= review.reviewParagraph
+        else
+          p No Reviews Yet!
               
 
 

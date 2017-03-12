@@ -1,5 +1,7 @@
 extends layout
 block content
+  each error in errors
+    .flash-error= error
   article.container.editProfile
     a(href="/account")
       &#8592; Accounts

@@ -824,18 +824,21 @@ footer {
       .search + .searchResult {
         text-align: center; } }
     .search + .searchResult .row section {
+      padding: 10px;
       height: 450px;
       text-align: center; }
       @media (max-width: 699px) {
         .search + .searchResult .row section {
           float: none;
           margin: 2em auto;
-          display: block; } }
+          display: block;
+          width: 90%; } }
       @media (max-width: 1199px) {
         .search + .searchResult .row section {
           float: none;
           margin: 2em auto;
-          display: block; } }
+          display: block;
+          width: 90%; } }
       .search + .searchResult .row section img {
         height: 100%; }
       .search + .searchResult .row section.userSearch {
@@ -933,53 +936,54 @@ footer {
     .summary section.container span {
       display: block; }
 
-.reviews {
-  margin-top: 70px;
+section.reviews, article.reviews {
+  min-height: 600px;
   text-align: center; }
-  .reviews a[href="/account"] {
+  section.reviews a[href="/account"], article.reviews a[href="/account"] {
     display: block;
     text-align: left; }
-  .reviews section {
+  section.reviews section, article.reviews section {
     margin-top: 10px;
     text-align: center; }
-    .reviews section div {
+    section.reviews section div, article.reviews section div {
       position: relative; }
-  .reviews a {
+  section.reviews a, article.reviews a {
     display: inline-block; }
-    .reviews a[href="/account"] {
+    section.reviews a[href="/account"], article.reviews a[href="/account"] {
       display: block;
       text-align: left; }
-    .reviews a[href^="/addReview"] {
+    section.reviews a[href^="/addReview"], article.reviews a[href^="/addReview"] {
       display: inline-block;
       text-align: center;
       font-size: 1.5em;
       padding: 10px;
+      margin: 20px 0;
       text-decoration: none;
       border-radius: 5px;
       color: rgba(255, 255, 255, 0.7);
       background-color: rgba(0, 0, 0, 0.8); }
-      .reviews a[href^="/addReview"]:hover {
+      section.reviews a[href^="/addReview"]:hover, article.reviews a[href^="/addReview"]:hover {
         color: white; }
-    .reviews a[href="/deleteReview"] {
+    section.reviews a[href="/deleteReview"], article.reviews a[href="/deleteReview"] {
       position: absolute;
       top: 0;
       right: 0;
       font-size: 2em;
       text-decoration: none;
       color: red; }
-  .reviews img {
+  section.reviews img, article.reviews img {
     height: 300px;
     display: block;
     margin: 0 auto;
     opacity: 0.8; }
-    .reviews img:hover {
+    section.reviews img:hover, article.reviews img:hover {
       opacity: 1; }
-  .reviews h3 {
+  section.reviews h3, article.reviews h3 {
     display: block; }
-    .reviews h3 a {
+    section.reviews h3 a, article.reviews h3 a {
       text-decoration: none;
       color: none; }
-      .reviews h3 a:visited {
+      section.reviews h3 a:visited, article.reviews h3 a:visited {
         color: black; }
 
 .profile {
@@ -1098,6 +1102,42 @@ footer {
   bottom: 0;
   width: 100%; }
 
+/******** FLASH ******/
+.flash-error, .flash-success {
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 30px;
+  color: white;
+  right: 0;
+  margin: 0 auto;
+  margin-top: 10px;
+  text-align: center;
+  animation-name: flash;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 2s;
+  animation-timing-function: linear;
+  border-radius: 5px;
+  overflow: hidden; }
+
+.flash-error {
+  background-color: #ffa381;
+  color: red;
+  border: solid 1px red; }
+
+.flash-success {
+  background-color: #b1ffae;
+  color: green;
+  border: solid 1px green;
+  z-index: 1000; }
+
+@keyframes flash {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    height: 0; } }
 /******** HOVER CSS ******/
 /* Underline From Center */
 .hvr-underline-from-center {

@@ -12,7 +12,7 @@ module.exports.account = function(req, res, next) {
 	};
 	request(requestOptions, function(err, response, body) {
 		if (err) {
-			console.log(err, "Account Error");
+			next(err);
 		} else if (response.statusCode === 200) {
 			if (body[0]) {
 				res.render('account', {
@@ -25,11 +25,13 @@ module.exports.account = function(req, res, next) {
 						}
 					}
 				});
+				return;
 			} else {
 				res.render('account');
+				return;
 			}
 		} else {
-			console.log(response.statusCode);
+			next(new Error("Internal Service Error"));
 		}
 	});
 }
@@ -43,17 +45,21 @@ module.exports.addReviewForm = function(req, res, next) {
 	request(requestOptions, function(err, response, body) {
 		if (err) {
 			next(err);
+			return;
 		} else if (response.statusCode === 200) {
 			res.render('addReview', {
 				movie: body
 			});
+			return;
 		} else if (response.statusCode === 400 || response.statusCode === 404) {
 			res.render('4xx', {
 				message: body.message,
 				statusCode: response.statusCode
-			})
+			});
+			return;
 		} else {
 			next(new Error("Internal Service Error"));
+			return;
 		}
 	});
 }
@@ -72,15 +78,20 @@ module.exports.addReview = function(req, res, next) {
 	request(requestOptions, function(err, response, body) {
 		if (err) {
 			next(err);
+			return;
 		} else if (response.statusCode === 201) {
-			res.redirect("/movieInfo/" + req.params.movieId);
+			req.flash("success", "Review Added");
+			res.redirect("/movieInfo/" + req.params.movieId + "/#reviews");
+			return;
 		} else if (response.statusCode === 400 || response.statusCode === 404) {
 			res.render('4xx', {
 				message: body.message,
 				statusCode: response.statusCode
-			})
+			});
+			return;
 		} else {
 			next(new Error("Internal Service Error"));
+			return;
 		}
 	});
 }
@@ -93,7 +104,8 @@ module.exports.editReviewForm = function(req, res, next) {
 	};
 	request(requestOptions, function(err, response, review) {
 		if (err) {
-			console.log(err);
+			next(err);
+			return;
 		} else if (response.statusCode === 200) {
 			if (res.locals.currentUser && (review.userId === res.locals.currentUser.id)) {
 				res.render('editReview', {
@@ -106,20 +118,22 @@ module.exports.editReviewForm = function(req, res, next) {
 						summary: review.summary
 					}
 				});
+				return;
 			} else {
 				res.render("4xx", {
 					message: "You are not authorized",
 					statusCode: 400
 				});
+				return;
 			}
 		} else if (response.statusCode === 400 || response.statusCode === 404) {
 				res.render("4xx", {
 					message: review.message,
 					statusCode: response.statusCode
 				});
-	
+				return;
 		} else {
-			res.send(response.statusCode);
+			next(new Error("Internal Service Error"));
 		}
 	});
 }
@@ -136,14 +150,17 @@ module.exports.editReview = function(req, res, next) {
 	}
 	request(requestOptions, function(err, response, body) {
 		if (err) {
-			console.log(err);
+			next(err);
 		} else if (response.statusCode === 200) {
+			req.flash("success", "Review Updated");
 			res.redirect('/reviews');
+			return;
 		} else if (response.statusCode === 400 || response.statusCode === 404) {
 			res.render("4xx", {
 				message: body.message,
 				statusCode: response.statusCode
 			});
+			return;
 		} else {
 			next(new Error("Internal Service Error"));
 		}
@@ -159,16 +176,19 @@ module.exports.editProfileForm = function(req, res, next) {
 	request(requestOptions, function(err, response, body) {
 		if (err) {
 			next(err);
+			return;
 		} else if (response.statusCode === 200) {
 			res.render("editProfile", {
 
 				user: body
 			});
+			return;
 		} else if (response.statusCode === 404) {
 			res.render("4xx", {
 				message: body.message || "",
 				statusCode: response.statusCode
 			});
+			return;
 		} else {
 			next(new Error("Internal Service Error"));
 		}
@@ -192,6 +212,7 @@ module.exports.editProfile = function(req, res) {
 		if (err) {
 			next(err);
 		} else if (response.statusCode === 200) {
+			req.flash("success", "Profile Updated");
 			res.redirect('/account');
 			return;
 		} else if (response.statusCode === 404 || response.statusCode === 400) {
@@ -199,6 +220,7 @@ module.exports.editProfile = function(req, res) {
 				message: body.message || "",
 				statusCode: response.statusCode
 			});
+			return;
 		} else {
 			next(new Error("Internal Service Error"));
 		}
@@ -214,18 +236,22 @@ module.exports.reviews = function(req, res, next) {
 	}
 	request(requestOptions, function(err, response, body) {
 		if (err) {
-			console.log(err);
+			next(err);
+			return;
 		} else if (response.statusCode === 200) {
 			res.render("reviews", {
 				reviews: body
 			});
+			return;
 		} else if (response.statusCode === 400) {
 			res.render('4xx', {
 				message: body.message || "",
 				statusCode: response.statusCode
 			});
+			return;
 		} else {
 			next(new Error("Internal Service Error"));
+			return;
 		}
 	});
 
@@ -241,18 +267,20 @@ module.exports.deleteReview = function(req,res,next) {
 		method: "DELETE",
 		json: {}
 	}
-	console.log("stage1")
 	request(requestOptions, function(err, response, body) {
-		console.log(response.statusCode);
 		if (err) {
-			console.log(err);
+			next(err);
+			return;
 		} else if (response.statusCode === 204) {
+			req.flash("error", "Review Deleted!")
 			res.redirect('/account');
+			return;
 		} else if (response.statusCode === 400 || response.statusCode === 404) {
 			res.render('4xx', {
 				message: body.message || "",
 				statusCode: response.statusCode
-			})
+			});
+			return;
 		} else {
 			next(new Error("Internal Service Error"));
 		}

@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  each success in successes
+    .flash-success= success
   article.home
     .carousel
       -var count = 0;
@@ -16,6 +18,8 @@ block content
     section.banner(id="signUp")
       h2  Sign Up!
     .wrapper
+      each error in errors
+        .flash-error= error
       article.container.jumbotron
         .row
           section.desktop-c-4.tablet-c-12
@@ -52,6 +56,9 @@ block content
         section.desktop-c-6.tablet-c-6.mobile-c-12(id=arr[count])
           h2
             a(href="movieInfo/"+review.Movie.id)= review.Movie.title
-          p= review.summary
+          if review.summary
+            p= review.summary
+          else
+            p No review Summary Added
           span= "-" + review.User.firstName + " " + review.User.lastName
         - count++;

@@ -6,9 +6,8 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var setupPassport = require('./src/setupPassport');
 var session = require('express-session');
-var publicRoutes = require('./src/routes/publicRoutes.js');
-var privateRoutes = require('./src/routes/privateRoutes.js');
-var authenticationRoutes = require('./src/routes/authenticationRoutes');
+var routes = require('./src/routes');
+
 var flash = require('connect-flash');
 // Move to helper function file later*****
 var allowCrossDomain = function(req, res, next) {
@@ -65,26 +64,29 @@ app.use(function(req, res, next) {
 });
 
 // App Routes
-app.use(publicRoutes);
-app.use(privateRoutes);
-app.use(authenticationRoutes);
+app.use(routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
-  next(err);
+  res.render('4xx', {
+    message: err.message,
+    statusCode: err.status
+  });
+  return;
 });
 
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
-  res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.message = res.locals.error.message || "Internal Service Error";
+  res.locals.status = res.locals.error.status || 500;
 
   // render the error page
-  res.status(err.status || 500);
-  res.send('error');
+  res.status(res.locals.status);
+  res.render("500");
 });
 
 module.exports = app;

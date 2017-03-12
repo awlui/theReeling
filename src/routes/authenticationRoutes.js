@@ -8,13 +8,17 @@ router.get('/login', authenticationControllers.loginForm);
 
 router.post('/login', passport.authenticate("login", {
 	successRedirect: '/account',
-	failureRedirect: '/login'
+	failureRedirect: '/login',
+	successFlash: true,
+	failureFlash: true
 }));
 
 router.post('/signUp', authenticationControllers.signUp, 
 	passport.authenticate("login", {
 	successRedirect: '/account',
-	failureRedirect: '/'
+	failureRedirect: '/',
+	failureFlash: true,
+	successFlash: true
 }));
 
 router.get("/logout", authenticationControllers.logout);
