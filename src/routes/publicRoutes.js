@@ -19,3 +19,4 @@ router.get('/profile/:userId', publicControllers.profile);
 //POST
 
 module.exports = router;
+

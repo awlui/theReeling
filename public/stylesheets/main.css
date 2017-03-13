@@ -768,12 +768,12 @@ article.home {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%); }
-      article.home .carousel > div:hover a {
-        opacity: 1; }
       article.home .carousel > div .carouselUnit {
         position: relative;
         max-width: 80%;
         margin: 0 auto; }
+        article.home .carousel > div .carouselUnit a:hover {
+          opacity: 1; }
   article.home button {
     color: blue; }
 
@@ -849,6 +849,19 @@ footer {
           background-color: white;
           min-height: 300px;
           border-radius: 10px; }
+  .search p {
+    display: inline-block;
+    height: 30px;
+    background-color: #009ecc;
+    border: 1px solid #00637f;
+    padding: 5px;
+    animation-name: flash;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+    animation-timing-function: linear;
+    border-radius: 5px;
+    overflow: hidden; }
 
 /******* Login Page ********/
 .login {
@@ -1309,6 +1322,12 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%; }
+
+.fa {
+  float: left;
+  color: white; }
+  .fa:hover {
+    color: yellow; }
 
 .button,
 button,

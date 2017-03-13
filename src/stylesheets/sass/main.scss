@@ -175,13 +175,13 @@ article.home {
 						}
 					}
 				}
-				&:hover a {
-					opacity: 1;
-				}
 				& .carouselUnit {
 					position: relative;
 					max-width: 80%;
 					margin: 0 auto;
+					& a:hover {
+						opacity: 1;
+					}
 				}
 			}
 		}
@@ -277,6 +277,20 @@ footer {
 				}
 			}
 		}
+	}
+	p {
+		display: inline-block;
+		height: 30px;
+		background-color: rgba(0,158,204,1);
+		border: 1px solid rgba(0,99,127, 1);
+		padding: 5px;
+		animation-name: flash;
+		animation-duration: 1s;
+		animation-fill-mode: forwards;
+		animation-delay: 2s;
+		animation-timing-function: linear;
+		border-radius: 5px;
+		overflow: hidden;
 	}
 
 }
@@ -845,7 +859,13 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-
+.fa {
+	float: left;
+	color: white;
+	&:hover {
+		color: yellow;
+	}
+}
 // Skeleton CSS button style
 .button,
 button,

@@ -4,16 +4,19 @@ module.exports.homepage = function(req, res) {
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/review",
 		qs: {
-			limit: 3
+			limit: 4
 		},
 		method: "GET",
 		json: {}
 	}
 	request(requestOptions, function(err, response, body) {
-		console.log(response.statusCode);
+		if (err) {
+			next(err);
+		}
 		res.render('index', {
 			reviews: body
 		});
+		return;
 	});
 
 }
@@ -47,6 +50,9 @@ module.exports.searchAPI = function(req, res) {
 	});
 }
 
+
+//Gets movie info existing in the RESTful api's database. If movie doesn't exist in database, controller performs get request to MovieDB api and then caches
+//the movie in database. This is a callback mess that I will fix with promises once I get some test code up.
 module.exports.movieInfo = function(req, res) {
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/movie/" + req.params.movieId,
@@ -56,8 +62,8 @@ module.exports.movieInfo = function(req, res) {
 	request(requestOptions, function(err, response, body) {
 		var requestOptions;
 		if (err) {
-			console.log('error')
-			console.log(err);
+			next(err);
+			return;
 		} else if (response.statusCode === 200) {
 			res.render('movieInfo', {
 				movie: {
@@ -83,7 +89,7 @@ module.exports.movieInfo = function(req, res) {
 			request(requestOptions, function(err, response, body) {
 				var requestOptions;
 				if (err) {
-					console.log(err);
+					next(err);
 				} else if (response.statusCode === 200) {
 					requestOptions = {
 						url: "https://blooming-sea-71496.herokuapp.com/api/movie/" + req.params.movieId,
@@ -99,21 +105,21 @@ module.exports.movieInfo = function(req, res) {
 					}
 					request(requestOptions, function(err, response, body) {
 						if (err) {
-							console.log(err);
+							next(err)
 						} else if (response.statusCode === 201) {
 							res.redirect('/movieInfo/' + body.id);
 
 						} else {
-							console.log(response.statusCode)
+							next(new Error("Internal Service Error"));
 						}
 					});
 				} else {
-					console.log(response.statusCode);
+					next(new Error("Internal Service Error"));
 				}
 			})
 
 		} else {
-			console.log(response.statusCode)
+			next(new Error("Internal Service Error"));
 		}
 	});
 }
@@ -126,7 +132,7 @@ module.exports.profile = function(req, res) {
 	};
 	request(requestOptions, function(err, response, body) {
 		if (err) {
-			console.log(err);
+			next(err);
 		} else if (response.statusCode === 200) {
 			res.render('profile', {
 				user: {
@@ -137,8 +143,13 @@ module.exports.profile = function(req, res) {
 					reviews: body.reviews
 				}
 			});
+		} else if (response.statusCode === 400 || response.statusCode === 404) {
+			res.render('4xx', {
+				message: body.message || "",
+				statusCode: response.statusCode
+			});
 		} else {
-			res.send(response.statusCode);
+			next(new Error("Internal Service Error"));
 		}
 	});
 }

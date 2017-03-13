@@ -8,15 +8,18 @@ html
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lora')
   body
     nav
+      a(href="https://github.com/awlui/theReeling", target="_blank")
+        i.fa.fa-github.fa-3x
       h1
         a(class="hvr-float-shadow" href="/") The Reeling
       div
         if currentUser
           a(href="/account") Account
+          a(href="/search") Search
           a(href="/logout") Logout
         else
           a(href="/login") Login
-        a(href="/search") Search
+          a(href="/search") Search
     block content
     footer
       article.container
@@ -38,3 +41,4 @@ html
     script(type="text/javascript", src="/slick/slick.min.js")
     script(type="text/javascript", src="/public/scripts/main.min.js")
     script(type="text/javascript", src="/public/scripts/ajax.min.js")
+    script(type="text/javascript", src="https://use.fontawesome.com/f63332f71c.js")
