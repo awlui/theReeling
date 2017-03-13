@@ -27,10 +27,10 @@ module.exports.signUp = function(req, res, next) {
 		url: "https://blooming-sea-71496.herokuapp.com/api/user",
 		method: "POST",
 		json: {
-			firstName: req.body.firstname,
-			lastName: req.body.lastname,
-			username: req.body.username,
-			password: req.body.password
+			firstName: req.sanitize(req.body.firstname),
+			lastName: req.sanitize(req.body.lastname),
+			username: req.sanitize(req.body.username),
+			password: req.sanitize(req.body.password)
 		}
 	}
 	request(requestOptions, function(err, response, body) {

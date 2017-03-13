@@ -7,7 +7,7 @@ var passport = require('passport');
 var setupPassport = require('./src/setupPassport');
 var session = require('express-session');
 var routes = require('./src/routes');
-
+var expressSanitizer = require('express-sanitizer');
 var flash = require('connect-flash');
 // Move to helper function file later*****
 var allowCrossDomain = function(req, res, next) {
@@ -31,7 +31,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use(expressSanitizer());
 // Static File Server Middleware
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/slick', express.static(path.join(__dirname, 'slick')));

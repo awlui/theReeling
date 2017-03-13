@@ -69,10 +69,10 @@ module.exports.addReview = function(req, res, next) {
 		url: "https://blooming-sea-71496.herokuapp.com/api/movie/" + req.params.movieId + "/review",
 		method: "POST",
 		json: {
-			userId: res.locals.currentUser.id,
-			movieId: req.params.movieId,
-			reviewParagraph: req.body.reviewParagraph,
-			summary: req.body.summary
+			userId: req.sanitize(res.locals.currentUser.id),
+			movieId: req.sanitize(req.params.movieId),
+			reviewParagraph: req.sanitize(req.body.reviewParagraph),
+			summary: req.sanitize(req.body.summary)
 		}
 	}
 	request(requestOptions, function(err, response, body) {
@@ -143,9 +143,9 @@ module.exports.editReview = function(req, res, next) {
 		url: "https://blooming-sea-71496.herokuapp.com/api/review/" + req.params.reviewId,
 		method: "PUT",
 		json: {
-			reviewParagraph: req.body.reviewParagraph,
-			summary: req.body.summary,
-			userId: res.locals.currentUser.id || null
+			reviewParagraph: req.sanitize(req.body.reviewParagraph),
+			summary: req.sanitize(req.body.summary),
+			userId: req.sanitize(res.locals.currentUser.id) || null
 		}
 	}
 	request(requestOptions, function(err, response, body) {
@@ -200,11 +200,11 @@ module.exports.editProfile = function(req, res) {
 	var requestOptions = {
 		url: "https://blooming-sea-71496.herokuapp.com/api/user/" + res.locals.currentUser.id,
 		json: {
-			movieOne: req.body.movieOne,
-			movieTwo: req.body.movieTwo,
-			movieThree: req.body.movieThree,
-			biography: req.body.biography,
-			image: req.user.image
+			movieOne: req.sanitize(req.body.movieOne),
+			movieTwo: req.sanitize(req.body.movieTwo),
+			movieThree: req.sanitize(req.body.movieThree),
+			biography: req.sanitize(req.body.biography),
+			image: req.sanitize(req.user.image)
 		},
 		method: "PUT"
 	};
